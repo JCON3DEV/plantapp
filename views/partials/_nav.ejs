@@ -39,20 +39,43 @@
       </form>
     </div>
 
-    <div>
-      <!-- below is the Login button-->
+    <!-- <div> -->
+      <!-- below is the Login button
       <form method="GET" action="">
         <button type="submit" class="btn btn-primary">
           dead login btn
         </button>
       </form>
-    </div>
+    </div> -->
 
     <div>
       <!-- below is the categories button-->
       <form method="GET" action="/category">
         <button type="submit" class="btn btn-primary">
           category page
+        </button>
+      </form>
+
+    </div>
+    <div>
+      <!-- below is the Seller Login button Redirects to favourites-->
+      <form method="GET" action="/my_products">
+        <button type="submit" class="btn btn-primary">
+          Seller Login
+        </button>
+      </form>
+      <!-- below is the Buyer Login button-->
+      <form method="GET" action="/favourite_items">
+        <button type="submit" class="btn btn-primary">
+          Buyer Login
+        </button>
+      </form>
+      <!-- below is the Logout button-->
+      <!-- #this should have a post to clear cookies #-->
+      <!-- Question - can we do a post AND a get from the same button?-->
+      <form method="GET" action="/index">
+        <button type="submit" class="btn btn-primary">
+          Logout
         </button>
       </form>
 
