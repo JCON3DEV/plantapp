@@ -73,7 +73,7 @@ app.get("/order_items", (req, res) => {
 // });
 // ================================
 
-app.get("/my_products", (req, res) => {
+app.get("/order_items", (req, res) => {
   res.render("my_products");
 });
 
@@ -82,6 +82,11 @@ app.get("/create_product", (req, res) => {
 });
 
 app.get("/", (req, res) => {
+  res.render("index");
+});
+
+// Below redirects to home page if miss typed
+app.get("/*", (req, res) => {
   res.render("index");
 });
 
