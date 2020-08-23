@@ -16,5 +16,19 @@
     <nav>
       <%- include("./partials/_nav") %>
     </nav>
+
+    <main class="container">
+      <!-- button to add product to database and redirect to my products -->
+      <div>
+        <form method="GET" action="/my_products">
+          <div class="create-product-button">
+            <button type="submit" class="btn btn-primary">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </main>
   </body>
 </html>

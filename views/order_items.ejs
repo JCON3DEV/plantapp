@@ -17,5 +17,19 @@
       <nav>
         <%- include("./partials/_nav") %>
       </nav>
+
+      <main class="container">
+        <!-- button to proceed to checkout -->
+        <div>
+          <form method="GET" action="/order_history">
+            <div class="create-product-button">
+              <button type="submit" class="btn btn-primary">
+                Proceed to checkout
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </main>
   </body>
 </html>
