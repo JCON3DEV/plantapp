@@ -16,5 +16,29 @@
     <nav>
       <%- include("./partials/_nav") %>
     </nav>
+
+    <main class="container">
+      <!-- button to create a new product listing -->
+      <div>
+        <form method="GET" action="/order_items">
+          <div class="create-product-button">
+            <button type="submit" class="btn btn-primary">
+              Add to basket
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- button to buy now -->
+      <div>
+        <form method="GET" action="/order_history">
+          <div class="create-product-button">
+            <button type="submit" class="btn btn-primary">
+              Buy now
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
   </body>
 </html>
