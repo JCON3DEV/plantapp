@@ -66,12 +66,9 @@ app.get("/order_items", (req, res) => {
   res.render("order_items");
 });
 
-//  ==============================
-// Below is STRETCH GOAL
-// app.get("/order_history", (req, res) => {
-//   res.render("order_history");
-// });
-// ================================
+app.get("/order_history", (req, res) => {
+  res.render("order_history");
+});
 
 app.get("/order_items", (req, res) => {
   res.render("my_products");
@@ -95,6 +92,8 @@ app.listen(PORT, () => {
 });
 
 /*
+List of ejs files for ref;
+.
 index.ejs
 category.ejs
 product.ejs
