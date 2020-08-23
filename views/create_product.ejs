@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>Create Product</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -12,37 +12,23 @@
   </head>
 
   <body>
-    <h1>Home Page!</h1>
+    <h1>Create Product!</h1>
     <nav>
       <%- include("./partials/_nav") %>
     </nav>
 
-    <main class = "container">
+    <main class="container">
+      <!-- button to add product to database and redirect to my products -->
       <div>
-        <form method="GET" action="/product">
-          <div class="product-listing">
+        <form method="GET" action="/my_products">
+          <div class="create-product-button">
             <button type="submit" class="btn btn-primary">
-              product 1
-            </button>
-          </div>
-        </form>
-
-        <form method="GET" action="/product">
-          <div class="product-listing">
-            <button type="submit" class="btn btn-primary">
-              product 2
-            </button>
-          </div>
-        </form>
-
-        <form method="GET" action="/product">
-          <div class="product-listing">
-            <button type="submit" class="btn btn-primary">
-              product 3
+              Submit
             </button>
           </div>
         </form>
       </div>
+
     </main>
   </body>
 </html>

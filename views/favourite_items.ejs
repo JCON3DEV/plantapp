@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>Favourite Items</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <h1>Home Page!</h1>
+    <h1>Favourite Items!</h1>
     <nav>
       <%- include("./partials/_nav") %>
     </nav>
@@ -43,6 +43,15 @@
           </div>
         </form>
       </div>
+
     </main>
   </body>
 </html>
+
+<form method="GET" action="/product">
+  <div class="form-example">
+    <button type="submit" class="btn btn-primary">
+      product
+    </button>
+  </div>
+</form>

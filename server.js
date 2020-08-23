@@ -46,10 +46,60 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
+app.get("/index", (req, res) => {
+  res.render("index");
+});
+
+app.get("/category", (req, res) => {
+  res.render("category");
+});
+
+app.get("/product", (req, res) => {
+  res.render("product");
+});
+
+app.get("/favourite_items", (req, res) => {
+  res.render("favourite_items");
+});
+
+app.get("/order_items", (req, res) => {
+  res.render("order_items");
+});
+
+app.get("/order_history", (req, res) => {
+  res.render("order_history");
+});
+
+app.get("/order_items", (req, res) => {
+  res.render("my_products");
+});
+
+app.get("/create_product", (req, res) => {
+  res.render("create_product");
+});
+
 app.get("/", (req, res) => {
+  res.render("index");
+});
+
+// Below redirects to home page if miss typed
+app.get("/*", (req, res) => {
   res.render("index");
 });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
+/*
+List of ejs files for ref;
+.
+index.ejs
+category.ejs
+product.ejs
+favourite_items.ejs
+order_items.ejs
+order_history.ejs
+my_products.ejs
+create_product.ejs
+*/

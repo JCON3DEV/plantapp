@@ -1,0 +1,86 @@
+<nav>
+  <div>
+    <p>Search for awesome stuff! </p>
+    <!-- below is the search bar form -->
+    <div class="search-bar">
+      <form method="POST" action="">
+        <label for="">Enter your search:</label>
+        <input type="text" name="" value="">
+        <button type="submit" class="btn btn-danger">
+          search doesn't work
+        </button>
+      </form>
+    </div>
+
+    <div>
+      <!-- below is the home button-->
+      <form method="GET" action="/index">
+        <div class="form-example">
+          <button type="submit" class="btn btn-primary">
+            home
+          </button>
+        </div>
+      </form>
+    </div>
+
+
+    <div>
+      <!-- below is th favourite button-->
+      <form method="GET" action="/favourite_items">
+        <button type="submit" class="btn btn-primary">
+          favourite
+        </button>
+      </form>
+      <!-- below is the Cart (order_items) button-->
+      <form method="GET" action="/order_items">
+        <button type="submit" class="btn btn-primary">
+          Cart (order_items)
+        </button>
+      </form>
+    </div>
+
+    <!-- <div> -->
+      <!-- below is the Login button
+      <form method="GET" action="">
+        <button type="submit" class="btn btn-primary">
+          dead login btn
+        </button>
+      </form>
+    </div> -->
+
+    <div>
+      <!-- below is the categories button-->
+      <form method="GET" action="/category">
+        <button type="submit" class="btn btn-primary">
+          category page
+        </button>
+      </form>
+
+    </div>
+    <div>
+      <!-- below is the Seller Login button Redirects to favourites-->
+      <form method="GET" action="/my_products">
+        <button type="submit" class="btn btn-primary">
+          Seller Login
+        </button>
+      </form>
+      <!-- below is the Buyer Login button-->
+      <form method="GET" action="/favourite_items">
+        <button type="submit" class="btn btn-primary">
+          Buyer Login
+        </button>
+      </form>
+      <!-- below is the Logout button-->
+      <!-- #this should have a post to clear cookies #-->
+      <!-- Question - can we do a post AND a get from the same button?-->
+      <form method="GET" action="/index">
+        <button type="submit" class="btn btn-primary">
+          Logout
+        </button>
+      </form>
+
+    </div>
+
+  </div>
+
+</nav>
