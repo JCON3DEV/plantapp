@@ -69,7 +69,9 @@ app.get("/product", (req, res) => {
 
 // buyer logs in and gets directed to favourites page
 app.get("/favourite_items", (req, res) => {
-  if (req.cookies.length === 0) {
+  // below does not work FIX ###########
+  // considering a guest cookie
+  if (req.cookies === null) {
     // this redirects guest users to the login page
     res.redirect("index");
   } else if (req.cookies.seller === "seller") {
@@ -101,6 +103,8 @@ app.get("/order_history", (req, res) => {
 
 // Seller logs in and is directed to thier listed products
 app.get("/my_products", (req, res) => {
+  // below does not work FIX ###########
+  // considering a guest cookie
   if (!req.cookies) {
     // this redirects guest users to the login page
     res.redirect("index");
@@ -113,6 +117,8 @@ app.get("/my_products", (req, res) => {
 });
 
 app.get("/create_product", (req, res) => {
+  // below does not work ################# FIX THIS
+  // considering a guest cookie
   if (!req.cookies) {
     // this redirects guest users to the login page
     res.redirect("index");
