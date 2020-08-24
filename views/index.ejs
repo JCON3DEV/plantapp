@@ -24,37 +24,104 @@
       <%- include("./partials/_nav") %>
     </nav>
 
-
-
     <main class = "container">
       <h1>Featured Items</h1>
-      <div>
-        <form method="GET" action="/product">
-          <div class="product-listing">
-            <button type="submit" class="btn btn-primary">
-              product 1
-            </button>
-          </div>
-        </form>
+      <div class="featured-products">
+        <!--List of featured items-->
 
-        <form method="GET" action="/product">
-          <div class="product-listing">
-            <button type="submit" class="btn btn-primary">
-              product 2
-            </button>
-          </div>
-        </form>
+        <!--product 1-->
+        <div>
+          <form method="GET" action="/product">
+            <div class="product-listing" method="GET" action="/product">
+              <img img src="https://images.pexels.com/photos/3234638/pexels-photo-3234638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="fasciata" style="width:100%">
+              <h4>fasciata</h4>
+              <button type="submit" class="btn">
+                More info
+              </button>
+            </div>
+          </form>
+        </div>
 
-        <form method="GET" action="/product">
-          <div class="product-listing">
-            <button type="submit" class="btn btn-primary">
-              product 3
-            </button>
-          </div>
-        </form>
+        <!--product 2-->
+        <div>
+          <form method="GET" action="/product">
+            <div class="product-listing" method="GET" action="/product">
+              <img img src="https://images.pexels.com/photos/3234638/pexels-photo-3234638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="fasciata" style="width:100%">
+              <h4>fasciata</h4>
+              <button type="submit" class="btn btn-primary">
+                More info
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!--product 3-->
+        <div>
+          <form method="GET" action="/product">
+            <div class="product-listing" method="GET" action="/product">
+              <img img src="https://images.pexels.com/photos/3234638/pexels-photo-3234638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="fasciata" style="width:100%">
+              <h4>fasciata</h4>
+              <button type="submit" class="btn btn-primary">
+                More info
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!--product 4-->
+        <div>
+          <form method="GET" action="/product">
+            <div class="product-listing" method="GET" action="/product">
+              <img img src="https://images.pexels.com/photos/3234638/pexels-photo-3234638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="fasciata" style="width:100%">
+              <h4>fasciata</h4>
+              <button type="submit" class="btn btn-primary">
+                More info
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!--product 5-->
+        <div>
+          <form method="GET" action="/product">
+            <div class="product-listing" method="GET" action="/product">
+              <img img src="https://images.pexels.com/photos/3234638/pexels-photo-3234638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="fasciata" style="width:100%">
+              <h4>fasciata</h4>
+              <button type="submit" class="btn btn-primary">
+                More info
+              </button>
+            </div>
+          </form>
+        </div>
+
       </div>
 
-      <p> hello </p>
+
+      <!--About us section-->
+      <div class="about-us">
+        <h2>About Us</h2>
+
+        <div class="info-cards">
+          <!--card 1: plant it-->
+          <div class="about-card">
+            <h3>plant it</h3>
+            <p>Daikon napa cabbage asparagus winter purslane kale. Celery potato scallion desert raisin horseradish spinach carrot soko carrot watercress.</p>
+          </div>
+
+          <!--card 2: swap it-->
+          <div class="about-card">
+            <h3>swap it</h3>
+            <p>Daikon napa cabbage asparagus winter purslane kale. Celery potato scallion desert raisin horseradish spinach carrot soko carrot watercress.</p>
+          </div>
+
+          <!--card 3: grow it-->
+          <div class="about-card">
+            <h3>grow it</h3>
+            <p>Daikon napa cabbage asparagus winter purslane kale. Celery potato scallion desert raisin horseradish spinach carrot soko carrot watercress.</p>
+          </div>
+        </div>
+
+      </div>
     </main>
   </body>
 </html>
