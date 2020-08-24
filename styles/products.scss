@@ -1,15 +1,108 @@
 body {
-  background-color: #DDD9D2;
+  background-color: #FFFFFF;
 
   h1 {
-    font-family: 'Alata', sans-serif;
-    font-size: 20px;
-    text-transform: uppercase;
-    letter-spacing: 5px;
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 1px;
     color: #173E3D;
+    padding-left: 2em;
+    padding-top: 3em;
+    padding-bottom: 0;
   }
 
-  .container {
-    padding: 1em;
+  .featured-products {
+    display: flex;
+    flex-direction: row;
+    padding: 3em;
+
+    h4 {
+      font-family: 'Alata', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      text-transform: lowercase;
+      text-align: center;
+      letter-spacing: 1px;
+      color: #173E3D;
+    }
+
+    .product-listing {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+      padding: 1em;
+      margin: 1em;
+      position: relative;
+      top: 0;
+      transition: top ease 0.5s;
+
+      .btn {
+        font-family: 'Alata', sans-serif;
+        font-size: 15px;
+        border: none;
+        outline: 0;
+        padding: 12px;
+        color: white;
+        background-color: #EBC7BB;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 15px;
+        transition: 0.5s;
+        border-radius: 25px;
+      }
+
+      .btn:hover {
+        background-color: #A66A4E;
+      }
+    }
+
+    .product-listing:hover {
+      top: -10px;
+    }
+  }
+
+  .about-us {
+    background-color: #DDD9D2;
+
+    h2 {
+      font-family: 'Libre Caslon Text', serif;
+      font-size: 30px;
+      font-weight: 600;
+      text-transform: lowercase;
+      text-align: center;
+      letter-spacing: 1px;
+      color: #173E3D;
+      padding-top: 2em;
+    }
+
+    h3 {
+      font-family: 'Libre Caslon Text', serif;
+      font-size: 20px;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 2px;
+      color: #A66A4E;
+      padding: 10px;
+    }
+
+    p {
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-bottom: 20px;
+      text-align: center;
+    }
+
+    .info-cards {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .about-card {
+      background-color: #FFFFFF;
+      margin-bottom: 50px;
+      margin-left: 50px;
+      margin-right: 50px;
+    }
   }
 }
