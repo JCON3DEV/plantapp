@@ -19,6 +19,18 @@
 
     <main class="container">
       <!-- button to create a new product listing -->
+      <% if (type === "buyer") { %>
+      <div>
+        <form method="POST" action="">
+          <div class="create-product-button">
+            <button type="submit" class="btn btn-primary">
+              Add to Favourite (not working)
+            </button>
+          </div>
+        </form>
+      </div>
+      <% } %>
+      <!-- button to add to basket (order_items) -->
       <div>
         <form method="GET" action="/order_items">
           <div class="create-product-button">
@@ -40,6 +52,7 @@
         </form>
       </div>
 
+      <% if (type === "seller") { %>
       <!-- button to mark product as sold out -->
       <div>
         <form method="POST" action="/my_products">
@@ -61,6 +74,7 @@
           </div>
         </form>
       </div>
+      <% } %>
     </main>
   </body>
 </html>
