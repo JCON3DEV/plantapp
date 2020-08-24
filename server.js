@@ -9,6 +9,8 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
+var cookieSession = require('cookie-session')
+var cookieParser = require('cookie-parser')
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -20,8 +22,13 @@ db.connect();
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
+app.use(cookieParser())
 
 app.set("view engine", "ejs");
+app.use(cookieSession ({
+  name: 'session',
+  keys: ['key1', 'key2'],
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
   src: __dirname + "/styles",
@@ -38,8 +45,8 @@ const widgetsRoutes = require("./routes/widgets");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
+// app.use("/api/users", usersRoutes(db));
+// app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
@@ -47,10 +54,12 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/index", (req, res) => {
+  console.log("##########################");
   res.render("index");
 });
 
 app.get("/category", (req, res) => {
+  console.log("##########################");
   res.render("category");
 });
 
@@ -58,7 +67,9 @@ app.get("/product", (req, res) => {
   res.render("product");
 });
 
+// buyer logs in and gets directed to favourites page
 app.get("/favourite_items", (req, res) => {
+  res.cookie('buyer', 'true');
   res.render("favourite_items");
 });
 
@@ -70,12 +81,21 @@ app.get("/order_history", (req, res) => {
   res.render("order_history");
 });
 
-app.get("/order_items", (req, res) => {
+// Seller logs in and is directed to thier listed products
+app.get("/my_products", (req, res) => {
+  res.cookie('seller', 'true');
   res.render("my_products");
 });
 
 app.get("/create_product", (req, res) => {
   res.render("create_product");
+});
+
+// deletes all cookies
+app.post("/logout", (req, res) => {
+  res.clearCookie('buyer');
+  res.clearCookie('seller');
+  res.render("index");
 });
 
 app.get("/", (req, res) => {
