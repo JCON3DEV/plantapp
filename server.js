@@ -54,12 +54,12 @@ const widgetsRoutes = require("./routes/widgets");
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/index", (req, res) => {
-  console.log("##########################");
+  // console.log("##########################");
+  console.log("WHAT IS THIS: ", req.cookies);
   res.render("index");
 });
 
 app.get("/category", (req, res) => {
-  console.log("##########################");
   res.render("category");
 });
 
@@ -69,25 +69,57 @@ app.get("/product", (req, res) => {
 
 // buyer logs in and gets directed to favourites page
 app.get("/favourite_items", (req, res) => {
-  res.cookie('buyer', 'true');
+  if (req.cookies.length === 0) {
+    // this redirects guest users to the login page
+    res.redirect("index");
+  } else if (req.cookies.seller === "seller") {
+    // this redirects sellers to the login page
+    res.redirect("index");
+  }
+  res.cookie('buyer', 'buyer');
+  console.log('Cookies: ', req.cookies.buyer);//Prints true / spongebob
   res.render("favourite_items");
 });
 
+// below access refused to seller cookie
 app.get("/order_items", (req, res) => {
+  //Below is redirect - do we wnat ot send an error page or a pop up?
+  if (req.cookies.seller === "seller"){
+    res.redirect("index");
+  }
   res.render("order_items");
 });
 
+// below access refused to buyer cookie
 app.get("/order_history", (req, res) => {
+  //Below is redirect - do we want to send an error page or a pop up?
+  if (req.cookies.seller === "seller") {
+    res.redirect("index");
+  }
   res.render("order_history");
 });
 
 // Seller logs in and is directed to thier listed products
 app.get("/my_products", (req, res) => {
-  res.cookie('seller', 'true');
+  if (!req.cookies) {
+    // this redirects guest users to the login page
+    res.redirect("index");
+  } else if (req.cookies.buyer === "buyer") {
+    // believe a pop up would be best rather than a redirect
+    res.redirect("index");
+  }
+  res.cookie('seller', 'seller');
   res.render("my_products");
 });
 
 app.get("/create_product", (req, res) => {
+  if (!req.cookies) {
+    // this redirects guest users to the login page
+    res.redirect("index");
+  } else if (req.cookies.buyer === "buyer") {
+    // bleive a pop up would be best rather than a redirect
+    res.redirect("index");
+  }
   res.render("create_product");
 });
 
