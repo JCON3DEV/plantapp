@@ -14,39 +14,28 @@
 
     <div>
       <!-- below is the home button-->
-      <form method="GET" action="/index">
         <div class="form-example">
           <button type="submit" class="btn btn-primary">
-            home
+            <a href="/index">home</a>
           </button>
         </div>
-      </form>
     </div>
 
 
     <div>
       <!-- below is th favourite button-->
-      <form method="GET" action="/favourite_items">
+      <!-- <form method="GET" action=""> -->
         <button type="submit" class="btn btn-primary">
-          favourite
+          <a href="/favourite_items">favourite</a>
         </button>
-      </form>
+      <!-- </form> -->
       <!-- below is the Cart (order_items) button-->
-      <form method="GET" action="/order_items">
+      <!-- <form method="GET" action=""> -->
         <button type="submit" class="btn btn-primary">
-          Cart (order_items)
+          <a href="/order_items">Cart (order_items)</a>
         </button>
-      </form>
+      <!-- </form> -->
     </div>
-
-    <!-- <div> -->
-      <!-- below is the Login button Do not believe this is necessary
-      <form method="GET" action="">
-        <button type="submit" class="btn btn-primary">
-          dead login btn
-        </button>
-      </form>
-    </div> -->
 
     <div>
       <!-- below is the categories button-->
@@ -61,14 +50,12 @@
         <a href="/my_products">Seller Login</a>
       </button>
       <!-- below is the Buyer Login button-->
-      <form method="GET" action="/favourite_items">
         <button type="submit" class="btn btn-primary">
-          Buyer Login
+          <a href="/favourite_items">Buyer Login</a>
         </button>
-      </form>
       <!-- below is the Logout button-->
       <!-- Question - can we do a post AND a get from the same button?-->
-      <form method="POST" action="/logout">
+      <form method="POST" action="/logout" >
         <button type="submit" class="btn btn-primary">
           Logout
         </button>
