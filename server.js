@@ -53,12 +53,6 @@ const widgetsRoutes = require("./routes/widgets");
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-// app.get("/index", (req, res) => {
-  //   // console.log("##########################");
-  //   // res.cookie("guest", "guest");
-  //   console.log("WHAT IS THIS: ", req.cookies);
-  //   res.render("index");
-  // });
 app.get("/", (req, res) => {
   console.log(req.session);
   const templateVars = {type :req.session.type};
@@ -71,55 +65,35 @@ app.get("/category", (req, res) => {
 });
 
 app.get("/product", (req, res) => {
-  res.render("product");
+  const templateVars = { type: req.session.type };
+  res.render("product",templateVars);
 });
 
 app.get("/buyer_login", (req, res) => {
   req.session.type = "buyer";
   res.redirect("/");
 });
-// buyer logs in and gets directed to favourites page
+
 app.get("/favourite_items", (req, res) => {
-  // if (req.cookies.guest === "guest") {
-  //   // this redirects guest users to the login page
-  //   res.redirect("index");
-  // } else if (req.cookies.seller === "seller") {
-  //   // this redirects sellers to the login page
-  //   res.redirect("index");
-  // }
-  // res.cookie('buyer', 'buyer');
   const templateVars = { type: req.session.type };
   res.render("favourite_items", templateVars)
 });
 
-// below access refused to seller cookie
 app.get("/order_items", (req, res) => {
-  //Below is redirect - do we wnat ot send an error page or a pop up?
-  // if (req.cookies.seller === "seller"){
-  //   res.redirect("index");
-  // }
   const templateVars = { type: req.session.type };
   res.render("order_items", templateVars);
 });
 
-// below access refused to buyer cookie
 app.get("/order_history", (req, res) => {
-  //Below is redirect - do we want to send an error page or a pop up?
-  // if (req.cookies.seller === "seller") {
-  //   res.redirect("index");
-  // }
   const templateVars = { type: req.session.type };
   res.render("order_history",templateVars);
 });
 
-// tessting to see if i can get request here and redirect
-// to homepage and keep my products seperate
 app.get("/seller_login", (req, res) => {
   req.session.type = "seller";
   res.redirect("/")
 });
-// Seller logs in and is directed to thier listed products
-// testing
+
 app.get("/my_products", (req, res) => {
   const templateVars = { type: req.session.type };
   res.render("my_products", templateVars);

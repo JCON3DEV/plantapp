@@ -42,7 +42,7 @@
     </div>
 
     <div>
-      <!-- below is the categories button-->
+      <!-- categories button is available to all-->
       <button class="btn btn-primary">
         <a href="/category">Category Page</a>
       </button>
@@ -51,18 +51,16 @@
     <div>
       <!-- if there is no cookie, Login buttons are displayed -->
       <% if (!type) { %>
-        <!-- below is the Seller Login button Redirects to product listings-->
+        <!-- below is the Seller Login -->
       <button type="submit" class="btn btn-primary">
         <a href="/seller_login">Seller Login</a>
-        <!-- <a href="/my_products">Seller Login</a> -->
       </button>
       <!-- below is the Buyer Login button-->
         <button type="submit" class="btn btn-primary">
           <a href="/buyer_login">Buyer Login</a>
-          <!-- <a href="/favourite_items">Buyer Login</a> -->
         </button>
         <% } else { %>
-        <!-- If there sre cookies logout button displays -->
+        <!-- Logout button only displays if there are cookies -->
       <!-- below is the Logout button-->
       <form method="POST" action="/logout" >
         <button type="submit" class="btn btn-primary">
