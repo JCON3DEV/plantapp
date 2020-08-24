@@ -60,74 +60,81 @@ const widgetsRoutes = require("./routes/widgets");
   //   res.render("index");
   // });
 app.get("/", (req, res) => {
-  // res.cookie("guest", "guest");
   console.log(req.session);
   const templateVars = {type :req.session.type};
   res.render("index", templateVars);
 });
 
 app.get("/category", (req, res) => {
-  res.render("category");
+  const templateVars = { type: req.session.type };
+  res.render("category",templateVars);
 });
 
 app.get("/product", (req, res) => {
   res.render("product");
 });
 
+app.get("/buyer_login", (req, res) => {
+  req.session.type = "buyer";
+  res.redirect("/");
+});
 // buyer logs in and gets directed to favourites page
 app.get("/favourite_items", (req, res) => {
-  if (req.cookies.guest === "guest") {
-    // this redirects guest users to the login page
-    res.redirect("index");
-  } else if (req.cookies.seller === "seller") {
-    // this redirects sellers to the login page
-    res.redirect("index");
-  }
-  res.cookie('buyer', 'buyer');
-  res.render("favourite_items");
+  // if (req.cookies.guest === "guest") {
+  //   // this redirects guest users to the login page
+  //   res.redirect("index");
+  // } else if (req.cookies.seller === "seller") {
+  //   // this redirects sellers to the login page
+  //   res.redirect("index");
+  // }
+  // res.cookie('buyer', 'buyer');
+  const templateVars = { type: req.session.type };
+  res.render("favourite_items", templateVars)
 });
 
 // below access refused to seller cookie
 app.get("/order_items", (req, res) => {
   //Below is redirect - do we wnat ot send an error page or a pop up?
-  if (req.cookies.seller === "seller"){
-    res.redirect("index");
-  }
-  res.render("order_items");
+  // if (req.cookies.seller === "seller"){
+  //   res.redirect("index");
+  // }
+  const templateVars = { type: req.session.type };
+  res.render("order_items", templateVars);
 });
 
 // below access refused to buyer cookie
 app.get("/order_history", (req, res) => {
   //Below is redirect - do we want to send an error page or a pop up?
-  if (req.cookies.seller === "seller") {
-    res.redirect("index");
-  }
-  res.render("order_history");
+  // if (req.cookies.seller === "seller") {
+  //   res.redirect("index");
+  // }
+  const templateVars = { type: req.session.type };
+  res.render("order_history",templateVars);
 });
 
-// Seller logs in and is directed to thier listed products
-app.get("/my_products", (req, res) => {
+// tessting to see if i can get request here and redirect
+// to homepage and keep my products seperate
+app.get("/seller_login", (req, res) => {
   req.session.type = "seller";
-  // res.cookie('seller', 'seller');
+  res.redirect("/")
+});
+// Seller logs in and is directed to thier listed products
+// testing
+app.get("/my_products", (req, res) => {
+  const templateVars = { type: req.session.type };
+  res.render("my_products", templateVars);
+});
+
+app.get("/create_product", (req, res) => {
   // if (req.cookies.guest === "guest") {
   //   // this redirects guest users to the login page
   //   res.redirect("index");
   // } else if (req.cookies.buyer === "buyer") {
-  //   // believe a pop up would be best rather than a redirect
+  //   // bleive a pop up would be best rather than a redirect
   //   res.redirect("index");
   // }
-  res.redirect("/");
-});
-
-app.get("/create_product", (req, res) => {
-  if (req.cookies.guest === "guest") {
-    // this redirects guest users to the login page
-    res.redirect("index");
-  } else if (req.cookies.buyer === "buyer") {
-    // bleive a pop up would be best rather than a redirect
-    res.redirect("index");
-  }
-  res.render("create_product");
+  const templateVars = { type: req.session.type };
+  res.render("create_product", templateVars);
 });
 
 // deletes all cookies

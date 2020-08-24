@@ -23,20 +23,22 @@
 
 
     <div>
-      <!-- below is th favourite button-->
-      <!-- <form method="GET" action=""> -->
+      <!-- below is the favourite button-->
         <% if (type === "buyer") { %>
         <button type="submit" class="btn btn-primary">
           <a href="/favourite_items">favourite</a>
         </button>
         <% } %>
-      <!-- </form> -->
+        <% if (type === "seller") { %>
+        <button type="submit" class="btn btn-primary">
+          <a href="/my_products">My Products</a>
+        </button>
+        <% } else { %>
       <!-- below is the Cart (order_items) button-->
-      <!-- <form method="GET" action=""> -->
         <button type="submit" class="btn btn-primary">
           <a href="/order_items">Cart (order_items)</a>
         </button>
-      <!-- </form> -->
+        <% } %>
     </div>
 
     <div>
@@ -47,18 +49,21 @@
     </div>
 
     <div>
-      <!-- below is the Seller Login button Redirects to favourites-->
+      <!-- if there is no cookie, Login buttons are displayed -->
       <% if (!type) { %>
+        <!-- below is the Seller Login button Redirects to product listings-->
       <button type="submit" class="btn btn-primary">
-        <a href="/my_products">Seller Login</a>
+        <a href="/seller_login">Seller Login</a>
+        <!-- <a href="/my_products">Seller Login</a> -->
       </button>
       <!-- below is the Buyer Login button-->
         <button type="submit" class="btn btn-primary">
-          <a href="/favourite_items">Buyer Login</a>
+          <a href="/buyer_login">Buyer Login</a>
+          <!-- <a href="/favourite_items">Buyer Login</a> -->
         </button>
         <% } else { %>
+        <!-- If there sre cookies logout button displays -->
       <!-- below is the Logout button-->
-      <!-- Question - can we do a post AND a get from the same button?-->
       <form method="POST" action="/logout" >
         <button type="submit" class="btn btn-primary">
           Logout
