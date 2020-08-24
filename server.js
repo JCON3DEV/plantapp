@@ -9,8 +9,8 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
-var cookieSession = require('cookie-session')
-var cookieParser = require('cookie-parser')
+var cookieSession = require('cookie-session');
+var cookieParser = require('cookie-parser');
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -27,7 +27,7 @@ app.use(cookieParser())
 app.set("view engine", "ejs");
 app.use(cookieSession ({
   name: 'session',
-  keys: ['key1', 'key2'],
+  keys: ['type'],
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
@@ -53,11 +53,17 @@ const widgetsRoutes = require("./routes/widgets");
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-app.get("/index", (req, res) => {
-  // console.log("##########################");
-  res.cookie("guest", "guest");
-  console.log("WHAT IS THIS: ", req.cookies);
-  res.render("index");
+// app.get("/index", (req, res) => {
+  //   // console.log("##########################");
+  //   // res.cookie("guest", "guest");
+  //   console.log("WHAT IS THIS: ", req.cookies);
+  //   res.render("index");
+  // });
+app.get("/", (req, res) => {
+  // res.cookie("guest", "guest");
+  console.log(req.session);
+  const templateVars = {type :req.session.type};
+  res.render("index", templateVars);
 });
 
 app.get("/category", (req, res) => {
@@ -101,15 +107,16 @@ app.get("/order_history", (req, res) => {
 
 // Seller logs in and is directed to thier listed products
 app.get("/my_products", (req, res) => {
-  if (req.cookies.guest === "guest") {
-    // this redirects guest users to the login page
-    res.redirect("index");
-  } else if (req.cookies.buyer === "buyer") {
-    // believe a pop up would be best rather than a redirect
-    res.redirect("index");
-  }
-  res.cookie('seller', 'seller');
-  res.render("my_products");
+  req.session.type = "seller";
+  // res.cookie('seller', 'seller');
+  // if (req.cookies.guest === "guest") {
+  //   // this redirects guest users to the login page
+  //   res.redirect("index");
+  // } else if (req.cookies.buyer === "buyer") {
+  //   // believe a pop up would be best rather than a redirect
+  //   res.redirect("index");
+  // }
+  res.redirect("/");
 });
 
 app.get("/create_product", (req, res) => {
@@ -125,21 +132,12 @@ app.get("/create_product", (req, res) => {
 
 // deletes all cookies
 app.post("/logout", (req, res) => {
-  res.clearCookie('buyer');
-  res.clearCookie('seller');
-  res.render("index");
+  req.session.type = null;
+  res.redirect("/");
 });
 
-app.get("/", (req, res) => {
-  res.cookie("guest", "guest");
-  res.render("index");
-});
 
-// Below redirects to home page if miss typed
-app.get("/*", (req, res) => {
-  res.cookie("guest", "guest");
-  res.render("index");
-});
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

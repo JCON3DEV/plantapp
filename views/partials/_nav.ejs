@@ -16,7 +16,7 @@
       <!-- below is the home button-->
         <div class="form-example">
           <button type="submit" class="btn btn-primary">
-            <a href="/index">home</a>
+            <a href="/">home</a>
           </button>
         </div>
     </div>
@@ -25,9 +25,11 @@
     <div>
       <!-- below is th favourite button-->
       <!-- <form method="GET" action=""> -->
+        <% if (type === "buyer") { %>
         <button type="submit" class="btn btn-primary">
           <a href="/favourite_items">favourite</a>
         </button>
+        <% } %>
       <!-- </form> -->
       <!-- below is the Cart (order_items) button-->
       <!-- <form method="GET" action=""> -->
@@ -46,6 +48,7 @@
 
     <div>
       <!-- below is the Seller Login button Redirects to favourites-->
+      <% if (!type) { %>
       <button type="submit" class="btn btn-primary">
         <a href="/my_products">Seller Login</a>
       </button>
@@ -53,6 +56,7 @@
         <button type="submit" class="btn btn-primary">
           <a href="/favourite_items">Buyer Login</a>
         </button>
+        <% } else { %>
       <!-- below is the Logout button-->
       <!-- Question - can we do a post AND a get from the same button?-->
       <form method="POST" action="/logout" >
@@ -60,6 +64,7 @@
           Logout
         </button>
       </form>
+      <% } %>
     </div>
 
   </div>
