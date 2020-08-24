@@ -55,6 +55,7 @@ const widgetsRoutes = require("./routes/widgets");
 // Separate them into separate routes files (see above).
 app.get("/index", (req, res) => {
   // console.log("##########################");
+  res.cookie("guest", "guest");
   console.log("WHAT IS THIS: ", req.cookies);
   res.render("index");
 });
@@ -69,9 +70,7 @@ app.get("/product", (req, res) => {
 
 // buyer logs in and gets directed to favourites page
 app.get("/favourite_items", (req, res) => {
-  // below does not work FIX ###########
-  // considering a guest cookie
-  if (req.cookies === null) {
+  if (req.cookies.guest === "guest") {
     // this redirects guest users to the login page
     res.redirect("index");
   } else if (req.cookies.seller === "seller") {
@@ -79,7 +78,6 @@ app.get("/favourite_items", (req, res) => {
     res.redirect("index");
   }
   res.cookie('buyer', 'buyer');
-  console.log('Cookies: ', req.cookies.buyer);//Prints true / spongebob
   res.render("favourite_items");
 });
 
@@ -103,9 +101,7 @@ app.get("/order_history", (req, res) => {
 
 // Seller logs in and is directed to thier listed products
 app.get("/my_products", (req, res) => {
-  // below does not work FIX ###########
-  // considering a guest cookie
-  if (!req.cookies) {
+  if (req.cookies.guest === "guest") {
     // this redirects guest users to the login page
     res.redirect("index");
   } else if (req.cookies.buyer === "buyer") {
@@ -117,9 +113,7 @@ app.get("/my_products", (req, res) => {
 });
 
 app.get("/create_product", (req, res) => {
-  // below does not work ################# FIX THIS
-  // considering a guest cookie
-  if (!req.cookies) {
+  if (req.cookies.guest === "guest") {
     // this redirects guest users to the login page
     res.redirect("index");
   } else if (req.cookies.buyer === "buyer") {
@@ -137,11 +131,13 @@ app.post("/logout", (req, res) => {
 });
 
 app.get("/", (req, res) => {
+  res.cookie("guest", "guest");
   res.render("index");
 });
 
 // Below redirects to home page if miss typed
 app.get("/*", (req, res) => {
+  res.cookie("guest", "guest");
   res.render("index");
 });
 
