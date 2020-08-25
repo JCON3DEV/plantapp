@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>My Products!</title>
     <!-- STYESHEETS-->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -19,13 +20,12 @@
   </head>
 
   <body>
-    <h1>My Products!</h1>
     <nav>
       <%- include("./partials/_nav") %>
     </nav>
 
     <main class="container">
-
+      <h1>My Products!</h1>
       <!-- button to create a new product listing -->
       <div>
         <form method="GET" action="/create_product">
