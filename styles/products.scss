@@ -7,15 +7,16 @@ body {
     font-weight: 400;
     letter-spacing: 1px;
     color: #173E3D;
-    padding-left: 2em;
-    padding-top: 3em;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 40px;
     padding-bottom: 0;
   }
 
   .featured-products {
     display: flex;
     flex-direction: row;
-    padding: 3em;
+    padding: 20px;
 
     h4 {
       font-family: 'Alata', sans-serif;
@@ -25,6 +26,10 @@ body {
       text-align: center;
       letter-spacing: 1px;
       color: #173E3D;
+
+      link {
+        text-decoration: none;
+      }
     }
 
     .product-listing {
@@ -42,7 +47,7 @@ body {
         outline: 0;
         padding: 12px;
         color: white;
-        background-color: #EBC7BB;
+        background-color: #DCA75A;
         text-align: center;
         cursor: pointer;
         width: 100%;
@@ -72,7 +77,7 @@ body {
       text-align: center;
       letter-spacing: 1px;
       color: #173E3D;
-      padding-top: 2em;
+      padding-top: 40px;
     }
 
     h3 {
@@ -83,7 +88,7 @@ body {
       text-align: center;
       letter-spacing: 2px;
       color: #A66A4E;
-      padding: 10px;
+      padding: 5px;
     }
 
     p {

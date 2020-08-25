@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
     <link rel="stylesheet" href="/styles/products.css" type="text/css" />
 
     <!--FONTS-->
@@ -33,24 +34,23 @@
         <div>
           <a href="/product/1">
             <div class="product-listing">
-              <img img src="/docs/plants/plant1.jpg" alt="fasciata" style="width:100%">
+              <img img src="/docs/plants/plant-1.jpg" alt="fasciata" style="width:100%">
               <h4>fasciata</h4>
               <button type="submit" class="btn">
-                More info
+                Favourite
               </button>
             </div>
           </a>
         </div>
 
         <!--product 2-->
-        <!--product 1-->
         <div>
-          <a href="/product/1">
+          <a href="/product/2">
             <div class="product-listing">
-              <img img src="/docs/plants/plant1.jpg" alt="fasciata" style="width:100%">
-              <h4>fasciata</h4>
+              <img img src="/docs/pots/pot-1.jpg" alt="earthpot" style="width:100%">
+              <h4>earth pot</h4>
               <button type="submit" class="btn">
-                More info
+                Favourite
               </button>
             </div>
           </a>
@@ -58,45 +58,114 @@
 
         <!--product 3-->
         <div>
-          <form method="GET" action="/product">
-            <div class="product-listing" method="GET" action="/product">
-              <img img src="https://images.pexels.com/photos/3234638/pexels-photo-3234638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="fasciata" style="width:100%">
-              <h4>fasciata</h4>
-              <button type="submit" class="btn btn-primary">
-                More info
+          <a href="/product/3">
+            <div class="product-listing">
+              <img img src="/docs/plants/plant-2.jpg" alt="rubbertree" style="width:100%">
+              <h4>rubber tree</h4>
+              <button type="submit" class="btn">
+                Favourite
               </button>
             </div>
-          </form>
+          </a>
         </div>
 
         <!--product 4-->
         <div>
-          <form method="GET" action="/product">
-            <div class="product-listing" method="GET" action="/product">
-              <img img src="https://images.pexels.com/photos/3234638/pexels-photo-3234638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="fasciata" style="width:100%">
-              <h4>fasciata</h4>
-              <button type="submit" class="btn btn-primary">
-                More info
+          <a href="/product/4">
+            <div class="product-listing">
+              <img img src="/docs/plants/plant-3.jpg" alt="pinkroses" style="width:100%">
+              <h4>pink roses</h4>
+              <button type="submit" class="btn">
+                Favourite
               </button>
             </div>
-          </form>
+          </a>
         </div>
 
         <!--product 5-->
         <div>
-          <form method="GET" action="/product">
-            <div class="product-listing" method="GET" action="/product">
-              <img img src="https://images.pexels.com/photos/3234638/pexels-photo-3234638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="fasciata" style="width:100%">
-              <h4>fasciata</h4>
-              <button type="submit" class="btn btn-primary">
-                More info
+          <a href="/product/5">
+            <div class="product-listing">
+              <img img src="/docs/plants/plant-4.jpg" alt="snakeplant" style="width:100%">
+              <h4>snake plant</h4>
+              <button type="submit" class="btn">
+                Favourite
               </button>
             </div>
-          </form>
+          </a>
+        </div>
+      </div>
+
+      <h1>Our picks for you</h1>
+      <div class="featured-products">
+        <!--List of more featured products-->
+
+        <!--product 1-->
+        <div>
+          <a href="/product/1">
+            <div class="product-listing">
+              <img img src="/docs/pots/pot-2.jpg" alt="fasciata" style="width:100%">
+              <h4>fasciata</h4>
+              <button type="submit" class="btn">
+                Favourite
+              </button>
+            </div>
+          </a>
+        </div>
+
+        <!--product 4-->
+        <div>
+          <a href="/product/4">
+            <div class="product-listing">
+              <img img src="/docs/plants/plant-3.jpg" alt="pinkroses" style="width:100%">
+              <h4>pink roses</h4>
+              <button type="submit" class="btn">
+                Favourite
+              </button>
+            </div>
+          </a>
+        </div>
+
+        <!--product 2-->
+        <div>
+          <a href="/product/1">
+            <div class="product-listing">
+              <img img src="/docs/plants/plant-1.jpg" alt="fasciata" style="width:100%">
+              <h4>fasciata</h4>
+              <button type="submit" class="btn">
+                Favourite
+              </button>
+            </div>
+          </a>
+        </div>
+
+        <!--product 2-->
+        <div>
+          <a href="/product/2">
+            <div class="product-listing">
+              <img img src="/docs/pots/pot-1.jpg" alt="earthpot" style="width:100%">
+              <h4>earth pot</h4>
+              <button type="submit" class="btn">
+                Favourite
+              </button>
+            </div>
+          </a>
+        </div>
+
+        <!--product 3-->
+        <div>
+          <a href="/product/3">
+            <div class="product-listing">
+              <img img src="/docs/plants/plant-2.jpg" alt="rubbertree" style="width:100%">
+              <h4>rubber tree</h4>
+              <button type="submit" class="btn">
+                Favourite
+              </button>
+            </div>
+          </a>
         </div>
 
       </div>
-
 
       <!--About us section-->
       <div class="about-us">
@@ -124,5 +193,9 @@
 
       </div>
     </main>
+
+    <footer>
+      <%- include("./partials/_footer") %>
+    </footer>
   </body>
 </html>
