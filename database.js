@@ -5,7 +5,7 @@ const pool = new Pool({
   user: "vagrant",
   password: "123",
   host: "localhost",
-  database: "plantappx",
+  database: "midterm",
 });
 /// BUYERS QUERRIES...........................................................................................................................//
 

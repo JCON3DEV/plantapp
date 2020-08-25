@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
+const db2        = require("./database.js");
 var cookieSession = require('cookie-session');
 var cookieParser = require('cookie-parser');
 
@@ -111,15 +112,33 @@ app.get("/my_products", (req, res) => {
 });
 
 app.get("/create_product", (req, res) => {
-  // if (req.cookies.guest === "guest") {
-  //   // this redirects guest users to the login page
-  //   res.redirect("index");
-  // } else if (req.cookies.buyer === "buyer") {
-  //   // bleive a pop up would be best rather than a redirect
-  //   res.redirect("index");
-  // }
   const templateVars = { type: req.session.type };
   res.render("create_product", templateVars);
+});
+
+// below takes the POST form from create_product.js, converts it into an object here and uses an imported addproduct function to update the db
+app.post("/my_products", (req, res) => {
+
+  // const productRows = [products.seller_id, products.price, products.availability, products.title, products.description, products.thumbnail_image_url, products.product_image_url, products.category, products.type, products.material, products.size]
+
+  //this could be improved ###
+  let productItem = {
+      seller_id: 3, // hard coding this temp
+      price: req.body.price,
+      availability: true, // hard coding this
+      title: req.body.product_name,
+      description: req.body.description,
+      thumbnail_image_url: req.body.thumbnail_image_url,
+      product_image_url: req.body.product_image_url,
+      category: req.body.category,
+      type: req.body.type,
+      material: null,
+      size:null
+    };
+
+  db2.addProduct(productItem);
+  console.log("req.body", req.body);
+  res.redirect("my_products");
 });
 
 // deletes all cookies

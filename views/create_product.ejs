@@ -29,7 +29,7 @@
       <h1>Create New Product</h1>
 
       <!-- add product to database and redirect to my products -->
-      <form method="GET" action="/my_products">
+      <form method="POST" action="/my_products">
 
       <!-- enter product name ('title') -->
         <div class="row">
@@ -37,7 +37,7 @@
             <label for="pname">Product Name</label>
           </div>
           <div class="col-75">
-            <input type="text" id="fname" name="firstname" placeholder="What is the name of your product?">
+            <input type="text" id="title" name="product_name" placeholder="What is the name of your product?">
           </div>
         </div>
 
@@ -47,7 +47,7 @@
             <label for="thumbnail">Thumbnail Image URL</label>
           </div>
           <div class="col-75">
-            <input type="text" id="lname" name="lastname" placeholder="Enter the link for your thumbnail image">
+            <input type="text" id="thumbnail_image_url" name="thumbnail_image_url" placeholder="Enter the link for your thumbnail image">
           </div>
         </div>
 
@@ -57,7 +57,7 @@
             <label for="cover">Cover Image URL</label>
           </div>
           <div class="col-75">
-            <input type="text" id="lname" name="lastname" placeholder="Enter the link for your cover image">
+            <input type="text" id="product_image_url" name="product_image_url" placeholder="Enter the link for your cover image">
           </div>
         </div>
 
@@ -67,7 +67,7 @@
           <label for="price">Price</label>
         </div>
         <div class="col-75">
-          <input type="text" id="lname" name="lastname" placeholder="How much is your product?">
+          <input type="text" id="price" name="price" placeholder="How much is your product?">
         </div>
       </div>
 
