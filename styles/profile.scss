@@ -1,5 +1,8 @@
 body {
   .profile-module {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
     .profile-img {
       width: 15%;
@@ -8,12 +11,13 @@ body {
 
     h6 {
       font-family: 'Alata', sans-serif;
-      font-size: 18px;
+      font-size: 40px;
+      margin: 0;
     }
   }
-
 
   hr {
     width: 95%;
   }
 }
+
