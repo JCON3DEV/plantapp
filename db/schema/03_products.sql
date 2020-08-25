@@ -12,6 +12,5 @@ CREATE TABLE products (
   category VARCHAR(255) NOT NULL,
   type TEXT,
   material VARCHAR(255),
-  size VARCHAR(255),
-
+  size VARCHAR(255)
 );

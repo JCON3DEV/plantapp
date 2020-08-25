@@ -5,7 +5,6 @@ CREATE TABLE order_items (
   product_id INTEGER REFERENCES products(id) ON DELETE CASCADE,
   quantity SMALLINT NOT NULL DEFAULT 0,
   cost INTEGER NOT NULL DEFAULT 0,
-  order_id INTEGER REFERENCES order_history(id) ON DELETE CASCADE,
-
+  order_id INTEGER REFERENCES order_history(id) ON DELETE CASCADE
 );
 

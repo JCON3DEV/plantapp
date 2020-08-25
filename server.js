@@ -69,6 +69,17 @@ app.get("/product", (req, res) => {
   res.render("product",templateVars);
 });
 
+app.get("/product/:product_id", (req, res) => {
+  const product_id = req.params.product_id;
+  db.query(`SELECT * FROM products WHERE id = ${product_id}`)
+  .then((data) => {
+    const product = data.rows[0];
+    //change this from hard coded to conditional
+    const templateVars = { product: product, type: 'buyer' };
+    res.render("product", templateVars);
+  });
+});
+
 app.get("/buyer_login", (req, res) => {
   req.session.type = "buyer";
   res.redirect("/");
