@@ -1,0 +1,29 @@
+footer {
+  background-color: #173E3D;
+
+  h5 {
+    font-family: 'Alata', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: lowercase;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+    padding-top: 40px;
+  }
+
+  .social {
+    display: flex;
+    justify-content: center;
+
+    .social-icon {
+      flex-direction: row;
+      width: 30px;
+
+    }
+  }
+
+
+
+
+}
