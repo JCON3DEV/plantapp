@@ -315,11 +315,36 @@ exports.addToFavouriteItems = addToFavouriteItems;
 
   //SOLD OUT.......................................................................................................................................//
 /**
- * Get sold out products from the database.
- * @param {{}} products An object containing products queries
+ * update products' availability in the database.
+ * @param {boolean} availability An object containing products queries
  * @return {Promise<{}>} A promise to the products.
  */
 
+
+// SELLER UPDATES INFO TO SHOW PRODUCT IS NO LONGER AVAILABLE
+
+const updateProductAvailability =  function(availability) {
+  const querryString =
+  (`
+  INSERT INTO products (availability)
+  VALUES ($1)
+  RETURNING *;
+  `)
+
+  return pool.query(querryString, [availability])
+    .then (res => {
+      return res.rows[0];
+    })
+    .catch(err => {
+      console.log('Error:', err)
+    });
+};
+exports.updateProductAvailability = updateProductAvailability;
+
+/**
+ * Get sold out products from the database.
+ * @return {Promise<{}>} A promise to the products.
+ */
 
 const soldOut = function() {
   const querryString =
@@ -342,8 +367,7 @@ exports.soldOut = soldOut;
   //BEST SELLING PRODUCT............................................................................................................................//
 /**
  * Get sold out products from the database.
- * @param {{}} products An object containing some products queries
- * @return {Promise<{}>} A promise to the products.
+  * @return {Promise<{}>} A promise to the products.
  */
 
 const bestSellingProduct = function() {
@@ -397,6 +421,11 @@ const getFavouriteItems = function(buyer_id, limit) {
     });
 };
 exports.getFavouriteItems = getFavouriteItems;
+
+
+// DELETE PRODUCTS
+
+
 
 
 
