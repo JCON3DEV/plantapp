@@ -426,6 +426,25 @@ exports.getFavouriteItems = getFavouriteItems;
 // DELETE PRODUCTS
 
 
+const deleteProduct = function(id) {
+  const querryString =
+  (`
+    DELETE
+    FROM products.id
+    WHERE id = $1;
+  `)
+  return pool.query(querryString, [id])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch (err => {
+      console.log('Error:', err)
+    });
+};
+exports.deleteProduct = deleteProduct;
+
+
+
 
 
 
