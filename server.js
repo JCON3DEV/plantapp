@@ -65,10 +65,17 @@ app.get("/category", (req, res) => {
   res.render("category",templateVars);
 });
 
-app.get("/product", (req, res) => {
-  const templateVars = { type: req.session.type };
-  res.render("product",templateVars);
-});
+// currently not working as query to find product does not yet exist
+// will error out
+// This could use query strings to search for product
+// could research how to take the info from the url - sounds complicated
+// app.get("/product", (req, res) => {
+//   const templateVars = {
+//     type: req.session.type,
+//     product, // does not exist need a querty from the user
+//   };
+//   res.render("product",templateVars);
+// });
 
 app.get("/product/:product_id", (req, res) => {
   const product_id = req.params.product_id;
@@ -78,6 +85,9 @@ app.get("/product/:product_id", (req, res) => {
     //change this from hard coded to conditional
     const templateVars = { product: product, type: 'buyer' };
     res.render("product", templateVars);
+  })
+  .catch((err) => {
+    console.log(err);
   });
 });
 
@@ -135,7 +145,7 @@ app.post("/my_products", (req, res) => {
       material: null,
       size:null
     };
-
+  // const templateVars = { productItem: req.session.type };
   db2.addProduct(productItem);
   console.log("req.body", req.body);
   res.redirect("my_products");

@@ -3,55 +3,129 @@
   <head>
     <title>Favourite Items</title>
 
+    <!-- STYESHEETS-->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/products.css" type="text/css" />
 
+    <!--FONTS-->
+    <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!--SCRIPTS-->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
   <body>
-    <h1>Favourite Items!</h1>
     <nav>
       <%- include("./partials/_nav") %>
     </nav>
 
     <main class = "container">
-      <div>
-        <form method="GET" action="/product">
-          <div class="product-listing">
-            <button type="submit" class="btn btn-primary">
-              product 1
-            </button>
-          </div>
-        </form>
+      <h1>Your Favourite Items</h1>
+      <div class="featured-products">
+        <!--List of featured items-->
 
-        <form method="GET" action="/product">
-          <div class="product-listing">
-            <button type="submit" class="btn btn-primary">
-              product 2
-            </button>
-          </div>
-        </form>
+        <!--product 1-->
+        <div>
+          <a href="/product/1">
+            <div class="product-listing">
+              <img img src="/docs/plants/plant-1.jpg" alt="fasciata" style="width:100%">
+              <h4>fasciata</h4>
+              <button type="submit" class="btn">
+                Favourite
+              </button>
+            </div>
+          </a>
+        </div>
 
-        <form method="GET" action="/product">
-          <div class="product-listing">
-            <button type="submit" class="btn btn-primary">
-              product 3
-            </button>
+        <!--product 2-->
+        <div>
+          <a href="/product/2">
+            <div class="product-listing">
+              <img img src="/docs/pots/pot-1.jpg" alt="earthpot" style="width:100%">
+              <h4>earth pot</h4>
+              <button type="submit" class="btn">
+                Favourite
+              </button>
+            </div>
+          </a>
+        </div>
+
+        <!--product 3-->
+        <div>
+          <a href="/product/3">
+            <div class="product-listing">
+              <img img src="/docs/plants/plant-2.jpg" alt="rubbertree" style="width:100%">
+              <h4>rubber tree</h4>
+              <button type="submit" class="btn">
+                Favourite
+              </button>
+            </div>
+          </a>
+        </div>
+
+        <!--product 4-->
+        <div>
+          <a href="/product/4">
+            <div class="product-listing">
+              <img img src="/docs/plants/plant-3.jpg" alt="pinkroses" style="width:100%">
+              <h4>pink roses</h4>
+              <button type="submit" class="btn">
+                Favourite
+              </button>
+            </div>
+          </a>
+        </div>
+
+        <!--product 5-->
+        <div>
+          <a href="/product/5">
+            <div class="product-listing">
+              <img img src="/docs/plants/plant-4.jpg" alt="snakeplant" style="width:100%">
+              <h4>snake plant</h4>
+              <button type="submit" class="btn">
+                Favourite
+              </button>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- How it works section-->
+      <div class="about-us">
+        <h2>how it works</h2>
+
+        <div class="info-cards">
+          <!--card 1: plant it-->
+          <div class="about-card">
+            <h3>plant it</h3>
+            <p>A Plant Swap is simply an event where fellow plant owners can come together to swap their plants. This could be done anywhere—like a public park or community a garden.</p>
           </div>
-        </form>
+
+          <!--card 2: swap it-->
+          <div class="about-card">
+            <h3>swap it</h3>
+            <p>The rules are simple: bring a pest-free, beautiful plant, or two or three for trade. Trade a few, or trade a lot! They can be potted or bare root—as long as you’re prepared to part with them.</p>
+          </div>
+
+          <!--card 3: grow it-->
+          <div class="about-card">
+            <h3>grow it</h3>
+            <p>Swap what you've brought, and take home a lot! Keep up the spirit of the trade, you never know what you can find out there. Take home your newly adopted plants and watch them grow!</p>
+          </div>
+        </div>
+
       </div>
 
     </main>
+
+    <footer>
+      <%- include("./partials/_footer") %>
+    </footer>
   </body>
 </html>
-
-<form method="GET" action="/product">
-  <div class="form-example">
-    <button type="submit" class="btn btn-primary">
-      product
-    </button>
-  </div>
-</form>
