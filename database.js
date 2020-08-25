@@ -23,7 +23,7 @@ const getBuyerWithEmail = function(email) {
   `)
   return pool.query(querryString, [email])
     .then(res => {
-      return res.rows[0]
+      return res.rows[0];
     })
     .catch (err => {
       console.log('Error:', err)
@@ -46,7 +46,7 @@ const getBuyerWithName = function(Name) {
   `)
   return pool.query(querryString, [name])
     .then(res => {
-      return res.rows[0]
+      return res.rows[0];
     })
     .catch (err => {
       console.log('Error:', err)
@@ -70,7 +70,7 @@ const getBuyerWithId = function(id) {
   `)
   return pool.query(querryString, [id])
     .then(res => {
-      return res.rows[0]
+      return res.rows[0];
     })
     .catch (err => {
       console.log('Error:', err)
@@ -96,7 +96,7 @@ const getSellerWithEmail = function(email) {
   `)
   return pool.query(querryString, [email])
     .then(res => {
-      return res.rows[0]
+      return res.rows[0];
     })
     .catch (err => {
       console.log('Error:', err)
@@ -119,7 +119,7 @@ const getSellerrWithName = function(Name) {
   `)
   return pool.query(querryString, [name])
     .then(res => {
-      return res.rows[0]
+      return res.rows[0];
     })
     .catch (err => {
       console.log('Error:', err)
@@ -143,7 +143,7 @@ const getSellerWithId = function(id) {
   `)
   return pool.query(querryString, [id])
     .then(res => {
-      return res.rows[0]
+      return res.rows[0];
     })
     .catch (err => {
       console.log('Error:', err)
@@ -181,6 +181,136 @@ exports.addProduct = addProduct;
 
 //PRODUCT QUERIES...............................................................................................................................//
 
+// Find a product by title
+/**
+ * Get a single product from the database given their title.
+ * @param {String} title The title of the product.
+ * @return {Promise<{}>} A promise to the product.
+ */
+
+
+const getProductByTitle = function(title) {
+  const querryString =
+  (`
+    SELECT *
+    FROM products
+    WHERE title = $1;
+  `)
+  return pool.query(querryString, [title])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch (err => {
+      console.log('Error:', err)
+    });
+};
+
+exports.getProductByTitle = getProductByTitle;
+
+
+// Filter a product by price
+
+/**
+ * Filter products from the database given their price.
+ * @param {String} price The price of the product.
+ * @return {Promise<{}>} A promise to the product.
+ */
+
+
+const getProductByExactPrice = function(price) {
+
+  let querryString =
+  (`
+    SELECT *
+    FROM products
+    WHERE price = $1
+  `)
+
+  return pool.query(querryString, [price])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch (err => {
+      console.log('Error:', err)
+    });
+};
+
+exports.getProductByExactPrice = getProductByExactPrice;
+
+/**
+ * Filter products from the database given their price range for greater than.
+ * @param {String} price The price of the product.
+ * @return {Promise<{}>} A promise to the product.
+ */
+
+
+const getProductByGreaterThanPrice = function(price) {
+
+  let querryString =
+  (`
+    SELECT *
+    FROM products
+    WHERE price >= $1
+  `)
+
+  return pool.query(querryString, [price])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch (err => {
+      console.log('Error:', err)
+    });
+};
+
+exports.getProductByGreaterThanPrice = getProductByGreaterThanPrice;
+
+
+/**
+ * Filter products from the database given their price for less than.
+ * @param {String} price The price of the product.
+ * @return {Promise<{}>} A promise to the product.
+ */
+
+
+const getProductByLessThanPrice = function(price) {
+
+  let querryString =
+  (`
+    SELECT *
+    FROM products
+    WHERE price <= $1
+  `)
+
+  return pool.query(querryString, [price])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch (err => {
+      console.log('Error:', err)
+    });
+};
+
+exports.getProductByLessThanPrice = getProductByLessThanPrice;
+
+
+
+const addToFavouriteItems =  function(products, buyers) {
+  const querryString =
+  (`
+  INSERT INTO favourite_items (product_id, buyer_id)
+  VALUES ($1, $2)
+  RETURNING *;
+  `)
+
+  return pool.query(querryString, [products.id, buyers.id])
+    .then (res => {
+      return res.rows[0];
+    })
+    .catch(err => {
+      console.log('Error:', err)
+    });
+};
+exports.addToFavouriteItems = addToFavouriteItems;
 
 
   //SOLD OUT.......................................................................................................................................//
@@ -200,7 +330,7 @@ const soldOut = function() {
   `)
   return pool.query(querryString)
     .then(res => {
-      return res.rows[0]
+      return res.rows[0];
     })
     .catch (err => {
       console.log('Error:', err)
@@ -217,6 +347,7 @@ exports.soldOut = soldOut;
  */
 
 const bestSellingProduct = function() {
+  const querryString =
   (`
     SELECT title AS product description AS description, type AS type, sum(order_items.quantity) AS total
     FROM products
@@ -227,7 +358,7 @@ const bestSellingProduct = function() {
   `)
   return pool.query(querryString)
     .then(res => {
-      return res.rows[0]
+      return res.rows[0];
     })
     .catch (err => {
       console.log('Error:', err)
@@ -259,12 +390,13 @@ const getFavouriteItems = function(buyer_id, limit) {
 
   return pool.query(querryString, [buyer_id, limit])
     .then(res => {
-      return res.rows
+      return res.rows[0]
     })
     .catch (err => {
       console.log('Error', err)
     });
 };
 exports.getFavouriteItems = getFavouriteItems;
+
 
 
