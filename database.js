@@ -487,7 +487,7 @@ const deleteProduct = function(id) {
   const querryString =
   (`
     DELETE
-    FROM products.id
+    FROM products
     WHERE id = $1;
   `)
   return pool.query(querryString, [id])
