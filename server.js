@@ -83,7 +83,7 @@ app.get("/product/:product_id", (req, res) => {
   .then((data) => {
     const product = data.rows[0];
     //change this from hard coded to conditional
-    const templateVars = { product: product, type: 'buyer' };
+    const templateVars = { product: product, type: req.session.type };
     res.render("product", templateVars);
   })
   .catch((err) => {
@@ -149,6 +149,23 @@ app.post("/my_products", (req, res) => {
   db2.addProduct(productItem);
   console.log("req.body", req.body);
   res.redirect("my_products");
+});
+
+app.post("/my_products/:id/soldout", (req, res) => {
+  const id = req.params.id;
+  db.query(`UPDATE products SET availability = false WHERE id = ${id}`)
+  .then(() => {
+    res.redirect(`/product/${req.params.id}`);
+  })
+});
+
+// ## below uses the database.js functions ###
+app.post("/my_products/:id/remove", (req, res) => {
+  const id = req.params.id;
+  db2.deleteProduct(id)
+    .then(() => {
+      res.redirect(`/`);
+    })
 });
 
 // deletes all cookies

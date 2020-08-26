@@ -19,7 +19,7 @@
 
     <main class="container">
       <!-- button to create a new product listing -->
-      <% if (type === "buyer") { %>
+      <% if (type === "buyer" || type === "seller" ) { %>
         <h1>hello IM WORKING</h1>
         <% if (product) { %>
         <h2><%= product.title %></h2>
@@ -33,7 +33,7 @@
         <h2><%= product.type %></h2>
         <h2><%= product.material %></h2>
         <h2><%= product.size %></h2>
-      <% } %>
+        <% } %>
 
       <div>
         <form method="POST" action="">
@@ -70,7 +70,7 @@
       <% if (type === "seller") { %>
       <!-- button to mark product as sold out -->
       <div>
-        <form method="POST" action="/my_products">
+        <form method="POST" action="/my_products/<%= product.id %>/soldout">
           <div class="create-product-button">
             <button type="submit" class="btn btn-primary">
               Sold out
@@ -81,7 +81,7 @@
 
       <!-- button to remove product -->
       <div>
-        <form method="POST" action="/my_products">
+        <form method="POST" action="/my_products/<%= product.id %>/remove">
           <div class="create-product-button">
             <button type="submit" class="btn btn-primary">
              Remove
