@@ -54,7 +54,7 @@ INSERT INTO products (seller_id, price, availability, title, description, thumbn
 VALUES (3, 10, true, 'Snake Plant', 'Broad leaf with yellow edges. Stands vertically.', '/docs/plants/plant-4.jpg', '/docs/plants/plant-4.jpg', 'plant', null, null, null);
 --  Macrame Pot
 INSERT INTO products (seller_id, price, availability, title, description, thumbnail_image_url, product_image_url, category, type, material, size)
-VALUES (1, 30, true, 'A knotted Macrame Pot', 'Macramé, the art of knotting rope, is a trendy boho-chic inspired plant hanger design.', '/public/docs/pots/pot-2.jpg', '/public/docs/pots/pot-2.jpg', 'pots', null, 'clay', 'large');
+VALUES (1, 30, true, 'Macrame Pot', 'Macramé, the art of knotting rope, is a trendy boho-chic inspired plant hanger design.', '/docs/pots/pot-2.jpg', '/docs/pots/pot-2.jpg', 'pots', null, 'clay', 'large');
 -- fake data
 INSERT INTO products (seller_id, price, availability, title, description, thumbnail_image_url, product_image_url, category, type, material, size)
 VALUES (1, 30, true, 'somepot4', 'long description 7', 'https://www.pexels.com/photo/assorted-flower-arrangements-947914/', 'https://www.pexels.com/photo/two-round-ceramic-potted-green-plants-and-liquid-filled-clear-drinking-glass-1166642/', 'pots', null, 'ceramic', 'medium');
