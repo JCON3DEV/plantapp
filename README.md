@@ -1,4 +1,4 @@
-LHL Node Skeleton
+Swap it! - The Plant Swap App
 =========
 
 ## Project Setup
