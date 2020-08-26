@@ -1,14 +1,14 @@
 -- aloe vera plant - spikey
 INSERT INTO products (seller_id, price, availability, title, description, thumbnail_image_url, product_image_url, category, type, material, size)
-VALUES (2, 18, true, 'Fasciata', 'aloe vera plant. Hardy, decorative and has medicianal uses.', '/public/docs/plants-1.jpg', '/public/docs/plants-1.jpg', 'plant', 'indoor plant', null, null);
+VALUES (2, 18, true, 'Fasciata', 'aloe vera plant. Hardy, decorative and has medicianal uses.', 'public/docs/plants/plants-1.jpg', 'public/docs/plants/plants-1.jpg', 'plant', 'indoor plant', null, null);
 
 -- multiple plants on a table
 INSERT INTO products (seller_id, price, availability, title, description, thumbnail_image_url, product_image_url, category, type, material, size)
-VALUES (4, 35, true, 'Earth Pot', 'several pot plants on a table.', '/public/docs/pots/pot-1.jpg', '/public/docs/pots/pot-1.jpg', 'plant', 'indoor/outdoor plant', null, null);
+VALUES (4, 35, true, 'Earth Pot', 'several pot plants on a table.', '/docs/pots/pot-1.jpg', '/docs/pots/pot-1.jpg', 'plant', 'indoor/outdoor plant', null, null);
 
 -- rubber tree broad leaf green plant
 INSERT INTO products (seller_id, price, availability, title, description, thumbnail_image_url, product_image_url, category, type, material, size)
-VALUES (1, 15, false, 'Rubber Tree', 'broad leafed green plant.', '/public/docs/plants-2.jpg', '/public/docs/plants-2.jpg', 'plant', 'plant', null, null);
+VALUES (1, 15, false, 'Rubber Tree', 'broad leafed green plant.', '/docs/plants-2.jpg', '/public/docs/plants-2.jpg', 'plant', 'plant', null, null);
 
 -- Pink Roses.
 INSERT INTO products (seller_id, price, availability, title, description, thumbnail_image_url, product_image_url, category, type, material, size)

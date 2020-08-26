@@ -29,21 +29,22 @@
       <h1>Featured Items</h1>
       <div class="featured-products">
         <!--List of featured items-->
-
+        <% for (const product of products) { %>
         <!--product 1-->
         <div>
-          <a href="/product/1">
+          <a href="/product/<%=product.id%>"">
             <div class="product-listing">
-              <img img src="/docs/plants/plant-1.jpg" alt="fasciata" style="width:100%">
-              <h4>fasciata</h4>
+              <img src="<%=product.thumbnail_image_url%>" alt="fasciata" style="width:100%">
+              <h4><%=product.title%></h4>
               <button type="submit" class="btn">
                 Favourite
               </button>
             </div>
           </a>
         </div>
-
+        <% } %>
         <!--product 2-->
+
         <div>
           <a href="/product/2">
             <div class="product-listing">
