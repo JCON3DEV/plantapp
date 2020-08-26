@@ -41,13 +41,13 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
+// const usersRoutes = require("./routes/users");
+// const widgetsRoutes = require("./routes/widgets");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-// app.use("/api/users", usersRoutes(db));
-// app.use("/api/widgets", widgetsRoutes(db));
+app.use("/api/users", usersRoutes(db));
+app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
@@ -55,7 +55,7 @@ const widgetsRoutes = require("./routes/widgets");
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  console.log(req.session);
+  console.log("req.session", req.session);
   const templateVars = {type :req.session.type};
   res.render("index", templateVars);
 });
@@ -82,8 +82,7 @@ app.get("/product/:product_id", (req, res) => {
   db.query(`SELECT * FROM products WHERE id = ${product_id}`)
   .then((data) => {
     const product = data.rows[0];
-    //change this from hard coded to conditional
-    const templateVars = { product: product, type: req.session.type };
+    const templateVars = { product: product, type: req.session.type || "buyer" };
     res.render("product", templateVars);
   })
   .catch((err) => {
@@ -126,9 +125,9 @@ app.get("/create_product", (req, res) => {
   res.render("create_product", templateVars);
 });
 
+//
 // below takes the POST form from create_product.js, converts it into an object here and uses an imported addproduct function to update the db
 app.post("/my_products", (req, res) => {
-
   // const productRows = [products.seller_id, products.price, products.availability, products.title, products.description, products.thumbnail_image_url, products.product_image_url, products.category, products.type, products.material, products.size]
 
   //this could be improved ###
