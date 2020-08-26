@@ -98,7 +98,8 @@ app.get("/product/:product_id", (req, res) => {
     console.log(err);
   });
 });
-
+//start of shopping progress -creates a new shopping cart
+// restart db before demo
 app.get("/buyer_login", (req, res) => {
   db.query(`
   INSERT INTO order_history(buyer_id)
@@ -119,7 +120,8 @@ app.get("/favourite_items", (req, res) => {
 });
 
 app.get("/order_items", (req, res) => {
-  console.log("%%%%req.sessions", req.session);
+  // console.log("%%%%req.sessions", req.session);
+  // oreder id is taken from session cookie. (created at "login")
   const id = req.session.id;
   db.query(`
   SELECT * FROM order_items
@@ -127,7 +129,8 @@ app.get("/order_items", (req, res) => {
   WHERE order_id = ${id}
   `)
   .then((data) =>{
-    console.log("*******data.rows", data.rows);
+    // data is the response form the db query - convention to call it data
+    // console.log("*******data.rows", data.rows);
     const templateVars = {
       type: req.session.type,
       items: data.rows,
@@ -160,17 +163,20 @@ app.get("/create_product", (req, res) => {
 // must be logged in to add to cart
 // below is the post from add to basket btn
 app.post("/order_items/:id",(req,res) =>{
+  // req.params got passed along by loggin in
   const productId = req.params.id;
   const orderId = req.session.id;
   console.log("req.params from the product page;",req.params);
+  // query to find the price based on info already aquired
   db.query(`SELECT price FROM products WHERE id = ${productId};`)
   .then((data) =>{
     const price = data.rows[0].price;
+    // ## the below return prevents nested promises -best practice ##
     return db.query(`
     INSERT INTO order_items (product_id, quantity, cost, order_id)
     VALUES ($1,$2,$3,$4);
     `, [productId, 1, price, orderId]);
-    //listed as price in the array due to variable name vs db table name
+    //listed as price (instead of cost) in the array due to variable name vs db table name
   })
   .then( () => {
     res.redirect("/order_items");
