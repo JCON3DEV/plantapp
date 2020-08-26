@@ -292,7 +292,64 @@ const getProductByLessThanPrice = function(price) {
 
 exports.getProductByLessThanPrice = getProductByLessThanPrice;
 
+/**
+ * Filter products from the database given their category.
+ * @param {String} category The category of the product.
+ * @return {Promise<{}>} A promise to the product.
+ */
 
+const getProductByCategory = function(category) {
+
+  let querryString =
+  (`
+    SELECT *
+    FROM products
+    WHERE category = $1
+  `)
+
+  return pool.query(querryString, [category])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch (err => {
+      console.log('Error:', err)
+    });
+};
+
+exports.getProductByCategory = getProductByCategory;
+
+
+/**
+ * Filter products from the database given their product type.
+ * @param {String} type The type of the product.
+ * @return {Promise<{}>} A promise to the product.
+ */
+
+const getProductByType = function(type) {
+
+  let querryString =
+  (`
+    SELECT *
+    FROM products
+    WHERE type = $1
+  `)
+
+  return pool.query(querryString, [type])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch (err => {
+      console.log('Error:', err)
+    });
+};
+
+exports.getProductByType = getProductByType;
+
+/**
+ * Add to favourites
+ * @param {{}} favourite items object.
+ * @return {Promise<{}>} A promise to the favourite items.
+ */
 
 const addToFavouriteItems =  function(products, buyers) {
   const querryString =
@@ -323,15 +380,15 @@ exports.addToFavouriteItems = addToFavouriteItems;
 
 // SELLER UPDATES INFO TO SHOW PRODUCT IS NO LONGER AVAILABLE
 
-const updateProductAvailability =  function(availability) {
+const updateProductAvailability =  function(availability, id) {
   const querryString =
   (`
-  INSERT INTO products (availability)
-  VALUES ($1)
-  RETURNING *;
+  UPDATE products
+  SET availability = $1
+  WHERE products.id = $2;
   `)
 
-  return pool.query(querryString, [availability])
+  return pool.query(querryString, [availability, id])
     .then (res => {
       return res.rows[0];
     })
