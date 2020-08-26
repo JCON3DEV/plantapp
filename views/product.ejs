@@ -36,7 +36,7 @@
         <% } %>
 
       <div>
-        <form method="POST" action="">
+        <form method="POST" action="/product/<%=product.id%>">
           <div class="create-product-button">
             <button type="submit" class="btn btn-primary">
               Add to Favourite (not working)
@@ -47,7 +47,7 @@
       <% } %>
       <!-- button to add to basket (order_items) -->
       <div>
-        <form method="POST" action="/order_items">
+        <form method="POST" action="/order_items/<%=product.id%>">
           <div class="create-product-button">
             <button type="submit" class="btn btn-primary">
               Add to basket

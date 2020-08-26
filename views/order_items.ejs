@@ -30,7 +30,10 @@
     <main class="container">
 
       <h1>Order Items!</h1>
-
+      <% for (const item of items ) { %>
+        <h2><%= item.product_id %></h2>
+        <h3><%= item.title %></h3>
+        <% } %>
       <!-- button to proceed to checkout -->
       <div>
         <form method="GET" action="/order_history">

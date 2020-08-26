@@ -100,8 +100,17 @@ app.get("/product/:product_id", (req, res) => {
 });
 
 app.get("/buyer_login", (req, res) => {
-  req.session.type = "buyer";
-  res.redirect("/");
+  db.query(`
+  INSERT INTO order_history(buyer_id)
+  VALUES (1)
+  RETURNING *;
+  `)
+  .then((data) => {
+    const order_id = data.rows[0].id;
+    req.session.type = "buyer";
+    req.session.id = order_id;
+    res.redirect("/");
+  });
 });
 
 app.get("/favourite_items", (req, res) => {
@@ -110,8 +119,22 @@ app.get("/favourite_items", (req, res) => {
 });
 
 app.get("/order_items", (req, res) => {
-  const templateVars = { type: req.session.type };
-  res.render("order_items", templateVars);
+  console.log("%%%%req.sessions", req.session);
+  const id = req.session.id;
+  db.query(`
+  SELECT * FROM order_items
+  JOIN products ON product_id = products.id
+  WHERE order_id = ${id}
+  `)
+  .then((data) =>{
+    console.log("*******data.rows", data.rows);
+    const templateVars = {
+      type: req.session.type,
+      items: data.rows,
+    };
+    res.render("order_items", templateVars);
+  });
+
 });
 
 app.get("/order_history", (req, res) => {
@@ -134,6 +157,33 @@ app.get("/create_product", (req, res) => {
   res.render("create_product", templateVars);
 });
 
+// must be logged in to add to cart
+// below is the post from add to basket btn
+app.post("/order_items/:id",(req,res) =>{
+  const productId = req.params.id;
+  const orderId = req.session.id;
+  console.log("req.params from the product page;",req.params);
+  db.query(`SELECT price FROM products WHERE id = ${productId};`)
+  .then((data) =>{
+    const price = data.rows[0].price;
+    return db.query(`
+    INSERT INTO order_items (product_id, quantity, cost, order_id)
+    VALUES ($1,$2,$3,$4);
+    `, [productId, 1, price, orderId]);
+    //listed as price in the array due to variable name vs db table name
+  })
+  .then( () => {
+    res.redirect("/order_items");
+  })
+})
+//below is from the add to favourite btn
+app.post("/product/:id", (req, res) => {
+  console.log("######req.params from the product page;", req.params);
+  db2.addToFavouriteItems(req.params.id, {id:1})
+  .then(() => {
+    res.redirect(`/favourite_items`);
+  })
+})
 //
 // below takes the POST form from create_product.js, converts it into an object here and uses an imported addproduct function to update the db
 app.post("/my_products", (req, res) => {
