@@ -500,6 +500,46 @@ const deleteProduct = function(id) {
 };
 exports.deleteProduct = deleteProduct;
 
+// ORDER ITEMS QUERIES...............................................................................................................................//
+
+const getOrderItemsByProduct = function(product) {
+
+  let querryString =
+  (`
+    SELECT *
+    FROM order_items
+      JOIN products on product_id = products.id
+    WHERE product_id = $1;
+  `)
+
+  return pool.query(querryString, [type])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch (err => {
+      console.log('Error:', err)
+    });
+};
+
+exports.getOrderItemsByProduct = getOrderItemsByProduct;
+
+const updateOrderItems =  function() {
+  const querryString =
+  (`
+  INSERT INTO order_items (product_id, quantity, cost, order_id)
+  VALUES ($1, $2, $3, $4)
+  WHERE products.id = $2;
+  `)
+
+  return pool.query(querryString, [])
+    .then (res => {
+      return res.rows[0];
+    })
+    .catch(err => {
+      console.log('Error:', err)
+    });
+};
+exports.updateOrderItems = updateOrderItems;
 
 
 
