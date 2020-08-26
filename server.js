@@ -46,8 +46,8 @@ app.use(express.static("public"));
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
+// app.use("/api/users", usersRoutes(db));
+// app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
@@ -56,8 +56,17 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
   console.log("req.session", req.session);
-  const templateVars = {type :req.session.type};
-  res.render("index", templateVars);
+  db.query(`SELECT * FROM products LIMIT 5;`)
+  .then((data) => {
+    console.log("$$$$%%%$$", data.rows);
+
+    const templateVars = {
+      type :req.session.type,
+      products: data.rows,
+    };
+    console.log("#### req.params", req.params);
+    res.render("index", templateVars);
+  });
 });
 
 app.get("/category", (req, res) => {
