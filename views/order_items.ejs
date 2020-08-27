@@ -31,15 +31,18 @@
 
       <h1>Order Items!</h1>
       <% for (const item of items ) { %>
-        <h2><%= item.product_id %></h2>
-        <h3><%= item.title %></h3>
+        <h2>Item name; <%= item.title %></h2>
+        <h3>Product id;<%= item.product_id %></h3>
+        <h3>Price; $$$<%= item.price %></h3>
+        <h3>Order No; <%= item.orderId %></h3>
+
         <% } %>
       <!-- button to proceed to checkout -->
       <div>
         <form method="GET" action="/order_history">
           <div class="create-product-button">
             <button type="submit" class="btn btn-primary">
-              Proceed to checkout
+              One Click Purchase
             </button>
           </div>
         </form>
