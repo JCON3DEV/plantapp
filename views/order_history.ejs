@@ -28,12 +28,19 @@
     <main class="container">
       <h1>Order History!</h1>
     </main>
-
+    <% let sum = 0; %>
+    <% for (const item of items) {%>
+      <div>
+          <%= JSON.stringify(item)%>
+          <% sum += item.cost * item.quantity  %>
+      </div>
+    <% } %>
+    <%= sum %>
     <div>
       <div>
         <a href="/product/3">
           <div class="product-listing">
-            <img img src="/docs/plants/plant-2.jpg" alt="rubbertree" style="width:100%">
+            <img img src="/docs/plants/plant-2.jpg" alt="rubbertree" style="height:4em; width:4em">
             <h4>rubber tree</h4>
             <button type="submit" class="btn">
               Favourite
@@ -45,7 +52,7 @@
       <div>
         <a href="/product/5">
           <div class="product-listing">
-            <img img src="/docs/plants/plant-4.jpg" alt="snakeplant" style="width:100%">
+            <img img src="/docs/plants/plant-4.jpg" alt="snakeplant" style="height:4em; width:4em">
             <h4>snake plant</h4>
             <button type="submit" class="btn">
               Favourite
