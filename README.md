@@ -14,6 +14,8 @@ Swap It! is your friendly, neighbourhood plant swapping app. Bring a plant or tw
 ## Context
 This project was made for the [Web Development Bootcamp](https://www.lighthouselabs.ca/en/web-development-bootcamp) midterm project at [Lighthouse Labs](https://www.lighthouselabs.ca/en) in August 2020.
 
+![swap it phone mockup](https://github.com/JCON3DEV/plantapp/blob/master/public/planning/mockups/mockup-2.png)
+
 # Project Setup
 
 The following steps are only for _one_ of the group members to perform.
@@ -57,7 +59,6 @@ The following steps are only for _one_ of the group members to perform.
 
 # Additional Project Photos
 ![swap it home mockup](https://github.com/JCON3DEV/plantapp/blob/master/public/planning/mockups/mockup-3.png)
-![swap it phonte mockup](https://github.com/JCON3DEV/plantapp/blob/master/public/planning/mockups/mockup-2.png)
 ![swap it wireframes](https://github.com/JCON3DEV/plantapp/blob/master/public/slides/slide%203.png)
 ![branding elements](https://github.com/JCON3DEV/plantapp/blob/master/public/slides/slide%206.png)
 ![references](https://github.com/JCON3DEV/plantapp/blob/master/public/slides/slide%207.png)
