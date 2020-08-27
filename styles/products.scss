@@ -90,6 +90,17 @@ body {
       padding: 5px;
     }
 
+    h4 {
+      font-family: 'Alata', sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 2px;
+      color: #A66A4E;
+      padding: 5px;
+    }
+
     p {
       padding-left: 20px;
       padding-right: 20px;
@@ -100,6 +111,17 @@ body {
     .info-cards {
       display: flex;
       flex-direction: row;
+
+      h3 {
+        font-family: 'Alata', sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: 2px;
+        color: #DCA75A;
+        padding: 5px;
+      }
     }
 
     .about-card {

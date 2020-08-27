@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
     <link rel="stylesheet" href="/styles/products.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/orders.css" type="text/css" />
 
     <!--FONTS-->
     <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
@@ -28,27 +29,27 @@
 
 
     <main class="container">
+      <div class="order-items">
+        <h1>Order Items</h1>
+        <% for (const item of items ) { %>
+          <h2>Item name; <%= item.title %></h2>
+          <h3>Product id;<%= item.product_id %></h3>
+          <h3>Price; $$$<%= item.price %></h3>
+          <h3>Order No; <%= item.order_id %></h3>
+          <img src="<%=item.thumbnail_image_url%>" alt="a picture of the product" style="height:60px; width:80px" >
 
-      <h1>Order Items!</h1>
-      <% for (const item of items ) { %>
-        <h2>Item name; <%= item.title %></h2>
-        <h3>Product id;<%= item.product_id %></h3>
-        <h3>Price; $$$<%= item.price %></h3>
-        <h3>Order No; <%= item.order_id %></h3>
-        <img src="<%=item.thumbnail_image_url%>" alt="a picture of the product" style="height:60px; width:80px" >
-
-        <% } %>
-      <!-- button to proceed to checkout -->
-      <div>
-        <form method="GET" action="/order_history">
-          <div class="create-product-button">
-            <button type="submit" class="btn btn-primary">
-              One Click Purchase
-            </button>
-          </div>
-        </form>
+          <% } %>
+        <!-- button to proceed to checkout -->
+        <div>
+          <form method="GET" action="/order_history">
+            <div class="create-product-button">
+              <button type="submit" class="btn btn-primary">
+                One Click Purchase
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-
     </main>
 
     <footer>
