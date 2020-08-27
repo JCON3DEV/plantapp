@@ -565,6 +565,3 @@ const getOrderHistory = function() {
 };
 
 exports.getOrderHistory = getOrderHistory;
-
-
-
