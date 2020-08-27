@@ -181,6 +181,26 @@ exports.addProduct = addProduct;
 
 //PRODUCT QUERIES...............................................................................................................................//
 
+
+//GET ALL PRODUCTS
+
+const getProducts = function() {
+  const querryString =
+  (`
+    SELECT *
+    FROM products
+  `)
+  return pool.query(querryString)
+    .then(res => {
+      return res.rows;
+    })
+    .catch (err => {
+      console.log('Error:', err)
+    });
+};
+
+exports.getProducts = getProducts;
+
 // Find a product by title
 /**
  * Get a single product from the database given their title.
@@ -255,7 +275,7 @@ const getProductByGreaterThanPrice = function(price) {
 
   return pool.query(querryString, [price])
     .then(res => {
-      return res.rows[0];
+      return res.rows;
     })
     .catch (err => {
       console.log('Error:', err)
@@ -272,18 +292,18 @@ exports.getProductByGreaterThanPrice = getProductByGreaterThanPrice;
  */
 
 
-const getProductByLessThanPrice = function(price) {
+const getProductByLessThanPrice = function(price, min) {
 
   let querryString =
   (`
     SELECT *
     FROM products
-    WHERE price <= $1
+    WHERE price <= $1 AND PRICE >= $2
   `)
 
-  return pool.query(querryString, [price])
+  return pool.query(querryString, [price, min])
     .then(res => {
-      return res.rows[0];
+      return res.rows;
     })
     .catch (err => {
       console.log('Error:', err)

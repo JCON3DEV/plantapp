@@ -70,8 +70,27 @@ app.get("/", (req, res) => {
 });
 
 app.get("/category", (req, res) => {
-  const templateVars = { type: req.session.type };
-  res.render("category",templateVars);
+  db2.getProducts()
+  .then ((result) => {
+    console.log("All Products:", result)
+    const templateVars = { type: req.session.type, products: result };
+
+    res.render("category",templateVars);
+
+  })
+
+});
+app.post("/categorybyprice", (req, res) => {
+  console.log("...............................................................................", req.body)
+  let minimum = req.body.min
+  let limit = req.body.max // name of the input
+  db2.getProductByLessThanPrice(limit, minimum)
+  .then ((result) => {
+    console.log("All Products:", result)
+    const templateVars = { type: req.session.type, products: result };
+    res.render("category",templateVars);
+  })
+
 });
 
 // currently not working as query to find product does not yet exist
