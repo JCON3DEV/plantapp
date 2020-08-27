@@ -36,9 +36,11 @@
             <div class="product-listing">
               <img src="<%=product.thumbnail_image_url%>" alt="fasciata" style="width:100%">
               <h4><%=product.title%></h4>
+              <form method="POST" action="/product/:id">
               <button type="submit" class="btn">
                 Favourite
               </button>
+              </form>
             </div>
           </a>
         </div>
