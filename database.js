@@ -544,4 +544,24 @@ exports.updateOrderItems = updateOrderItems;
 
 
 
+// ORDER_HISTORY QUERY ............................................................................................................................//
 
+const getOrderHistory = function() {
+
+  let querryString =
+  (`
+    SELECT *
+    FROM order_history
+      JOIN buyers on buyer_id = buyers.id
+  `)
+
+  return pool.query(querryString)
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch (err => {
+      console.log('Error:', err)
+    });
+};
+
+exports.getOrderHistory = getOrderHistory;
