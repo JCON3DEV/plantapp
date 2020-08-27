@@ -1,7 +1,7 @@
 Swap it! - The Plant Swap App
 =========
 
-![swap it main photo](https://github.com/JCON3DEV/plantapp/blob/master/public/planning/mockups/mockup-2.png)
+![swap it main photo](https://github.com/JCON3DEV/plantapp/blob/master/public/planning/mockups/mockup-1.png)
 
 ## Project Setup
 
