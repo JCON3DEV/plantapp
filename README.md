@@ -1,6 +1,8 @@
 Swap it! - The Plant Swap App
 =========
 
+![swap it main photo](https://github.com/JCON3DEV/plantapp/blob/master/public/planning/mockups/mockup-2.png)
+
 ## Project Setup
 
 The following steps are only for _one_ of the group members to perform.
