@@ -3,7 +3,18 @@ Swap it! - The Plant Swap App
 
 ![swap it main photo](https://github.com/JCON3DEV/plantapp/blob/master/public/planning/mockups/mockup-1.png)
 
-## Project Setup
+# What is Swap It?
+Swap It! is your friendly, neighbourhood plant swapping app. Bring a plant or two, or twenty! We leave it up to you, as long as you're prepared to part with them. Trade what you've got, and come home with lots! Welcome to the plant swap.
+
+## Team Members
+- Christy Lum (@christylumm)
+- Jordan Heasman (@JCON3DEV)
+- Favour Ogboruche (@whyttte)
+
+## Context
+This project was made for the [Web Development Bootcamp](https://www.lighthouselabs.ca/en/web-development-bootcamp) midterm project at [Lighthouse Labs](https://www.lighthouselabs.ca/en) in August 2020.
+
+# Project Setup
 
 The following steps are only for _one_ of the group members to perform.
 
