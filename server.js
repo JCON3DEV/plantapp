@@ -177,6 +177,9 @@ app.get("/seller_login", (req, res) => {
 });
 
 app.get("/my_products", (req, res) => {
+  // ##################################################################################
+  // MUST add get * prodcuts for user whre id = ...
+  // pass the resutls to ejs as template vars
   const templateVars = { type: req.session.type };
   res.render("my_products", templateVars);
 });
@@ -253,9 +256,12 @@ app.post("/my_products", (req, res) => {
       size:null
     };
   // const templateVars = { productItem: req.session.type };
-  db2.addProduct(productItem);
-  console.log("req.body", req.body);
-  res.redirect("my_products");
+  db2.addProduct(productItem)
+  .then((data) => {
+    console.log("product item ........###.......", productItem)
+    console.log("data", data);
+    res.redirect(`/product/${data.id}`);
+  });
 });
 
 app.post("/my_products/:id/soldout", (req, res) => {
