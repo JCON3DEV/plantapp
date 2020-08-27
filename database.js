@@ -457,13 +457,13 @@ exports.bestSellingProduct = bestSellingProduct;
  * @return {Promise<[{}]>} A promise to the favourite_items.
  */
 
-const getFavouriteItems = function(buyer_id, limit) {
+const getFavouriteItems = function(buyer_id, limit = 5) {
 
   const querryString =
   (`
   SELECT favourite_items.*, products.title, products.description, products.thumbnail_image_url, products.product_image_url, products.category, products.type, products.material, products.size
   FROM favourite_items
-    JOIN products ON product_id = products.id
+  JOIN products ON product_id = products.id
   WHERE buyer_id = $1
   ORDER BY products.title
   LIMIT $2;
@@ -471,7 +471,7 @@ const getFavouriteItems = function(buyer_id, limit) {
 
   return pool.query(querryString, [buyer_id, limit])
     .then(res => {
-      return res.rows[0]
+      return res.rows
     })
     .catch (err => {
       console.log('Error', err)

@@ -115,8 +115,15 @@ app.get("/buyer_login", (req, res) => {
 });
 
 app.get("/favourite_items", (req, res) => {
-  const templateVars = { type: req.session.type };
-  res.render("favourite_items", templateVars)
+  db2.getFavouriteItems(1)
+  .then((favourites) => {
+    console.log("$$$%$%$%$%.........", favourites);
+    const templateVars = {
+      type: req.session.type,
+      favourites,
+    };
+    res.render("favourite_items", templateVars)
+  })
 });
 
 app.get("/order_items", (req, res) => {

@@ -38,6 +38,21 @@
       <h1>Your Favourite Items</h1>
       <div class="featured-products">
         <!--List of featured items-->
+        <% for (favourite of favourites) {%>
+          <!-- <script> console.log(<%=favourite%>); </script> -->
+          <h2><%= JSON.stringify(favourite) %></h2>
+          <div>
+            <a href="/product/1">
+              <div class="product-listing">
+                <img img src="/docs/plants/plant-1.jpg" alt="fasciata" style="width:100%">
+                <h4>fasciata</h4>
+                <button type="submit" class="btn">
+                  Favourite
+                </button>
+              </div>
+            </a>
+          </div>
+        <% } %>
 
         <!--product 1-->
         <div>
