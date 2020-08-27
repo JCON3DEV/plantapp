@@ -114,6 +114,7 @@ app.get("/buyer_login", (req, res) => {
   });
 });
 
+// does this need to be hard coded can we make this dyncic below
 app.get("/favourite_items", (req, res) => {
   db2.getFavouriteItems(1)
   .then((favourites) => {
