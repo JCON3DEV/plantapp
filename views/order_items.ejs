@@ -37,18 +37,19 @@
           <h3>Price; $$$<%= item.price %></h3>
           <h3>Order No; <%= item.order_id %></h3>
           <img src="<%=item.thumbnail_image_url%>" alt="a picture of the product" style="height:60px; width:80px" >
-
           <% } %>
-        <!-- button to proceed to checkout -->
-        <div>
-          <form method="GET" action="/order_history">
-            <div class="create-product-button">
-              <button type="submit" class="btn btn-primary">
-                One Click Purchase
-              </button>
-            </div>
-          </form>
-        </div>
+          <!-- button to proceed to checkout -->
+          <div>
+            <% if (items) {%>
+            <form method="GET" action="/order_history/<%=items[0].order_id%>">
+              <div class="create-product-button">
+                <button type="submit" class="btn btn-primary">
+                  One Click Purchase
+                </button>
+              </div>
+            </form>
+          </div>
+          <% } %>
       </div>
     </main>
 

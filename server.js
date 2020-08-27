@@ -128,8 +128,8 @@ app.get("/favourite_items", (req, res) => {
 });
 
 app.get("/order_items", (req, res) => {
-  // console.log("%%%%req.sessions", req.session);
-  // oreder id is taken from session cookie. (created at "login")
+  console.log("%%%%...........req.sessions", req.session);
+  // order id is taken from session cookie. (created at "login")
   const id = req.session.id;
   db.query(`
   SELECT * FROM order_items
