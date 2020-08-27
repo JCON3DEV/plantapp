@@ -192,8 +192,9 @@ app.post("/order_items/:id",(req,res) =>{
 })
 //below is from the add to favourite btn
 app.post("/product/:id", (req, res) => {
+  console.log("............>>>>>>>>>>>>>>.................. req.body", req.body);//empty
   console.log("######req.params from the product page;", req.params);
-  db2.addToFavouriteItems(req.params.id, {id:1})
+  db2.addToFavouriteItems(req.params, {id:1})
   .then(() => {
     res.redirect(`/favourite_items`);
   })
