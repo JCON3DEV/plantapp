@@ -164,13 +164,21 @@ app.get("/create_product", (req, res) => {
 // below is the post from add to basket btn
 app.post("/order_items/:id",(req,res) =>{
   // req.params got passed along by loggin in
+  console.log("*&*&*& req session info; ", req.session);
+  console.log("%%%%%%** req.params data; ", req.params);
   const productId = req.params.id;
   const orderId = req.session.id;
-  console.log("req.params from the product page;",req.params);
+  // console.log("req.params from the product page;",req.params);
   // query to find the price based on info already aquired
-  db.query(`SELECT price FROM products WHERE id = ${productId};`)
+  db.query(`SELECT price, description, thumbnail_image_url FROM products WHERE id = ${productId};`)
   .then((data) =>{
+    console.log("***__***data .rows added to cart item;***^^**", data.rows[0]);
     const price = data.rows[0].price;
+    const img = data.rows[0].thumbnail_image_url;
+    const description = data.rows[0].description;
+
+    const templateVars = {img,description};
+    console.log(templateVars);
     // ## the below return prevents nested promises -best practice ##
     return db.query(`
     INSERT INTO order_items (product_id, quantity, cost, order_id)
