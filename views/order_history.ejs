@@ -30,35 +30,39 @@
     </main>
     <% let sum = 0; %>
     <% for (const item of items) {%>
+
       <div>
-          <%= JSON.stringify(item)%>
+        <div class="product-listing">
+          <h4>Order Id: <%=item.order_id%> </h4>
+          <h4>Item: <%=item.title%> </h4>
+          <img src="<%= item.thumbnail_image_url%>" alt="product image" style="height:4em; width:4em">
+          <h4>Price: <%=item.price%> </h4>
+          <h4>Quantity: <%=item.title%> </h4>
           <% sum += item.cost * item.quantity  %>
+        </div>
       </div>
     <% } %>
-    <%= sum %>
+    <h3>Total Cost: <%= sum %></h3>
+
     <div>
       <div>
-        <a href="/product/3">
-          <div class="product-listing">
-            <img img src="/docs/plants/plant-2.jpg" alt="rubbertree" style="height:4em; width:4em">
-            <h4>rubber tree</h4>
-            <button type="submit" class="btn">
-              Favourite
-            </button>
-          </div>
-        </a>
+        <div class="product-listing">
+          <h4>Order Id:
+          <h4>Item: Rubber Tree</h4>
+          <img img src="/docs/plants/plant-2.jpg" alt="rubbertree" style="height:4em; width:4em">
+          <h4>Price: 15 </h4>
+          <h4>Quantity: 1 </h4>
+        </div>
       </div>
 
       <div>
-        <a href="/product/5">
-          <div class="product-listing">
-            <img img src="/docs/plants/plant-4.jpg" alt="snakeplant" style="height:4em; width:4em">
-            <h4>snake plant</h4>
-            <button type="submit" class="btn">
-              Favourite
-            </button>
-          </div>
-        </a>
+        <div class="product-listing">
+          <h4>Item: Snake Plant</h4>
+          <img img src="/docs/plants/plant-4.jpg" alt="snakeplant" style="height:4em; width:4em">
+          <h4>Price: $$$ </h4>
+          <h4>Quantity: 1 </h4>
+        </div>
+        <h3>Total Cost: <%= sum %></h3>
       </div>
     </div>
     <footer>
