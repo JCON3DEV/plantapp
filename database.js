@@ -562,20 +562,18 @@ const updateOrderItems =  function() {
 exports.updateOrderItems = updateOrderItems;
 
 
-// ORDER_HISTORY QUERY ............................................................................................................................//
-
-const getOrderHistory = function() {
-
+const getOrderHistory = function(id) {
   let querryString =
   (`
-    SELECT *
+    SELECT order_items.*, products.*
     FROM order_history
-      JOIN buyers on buyer_id = buyers.id
+    JOIN order_items ON order_history.id = order_items.order_id
+    JOIN products ON order_items.product_id = products.id
+    WHERE order_id = $1;
   `)
-
-  return pool.query(querryString)
+  return pool.query(querryString, [Number(id)])
     .then(res => {
-      return res.rows[0];
+      return res.rows;
     })
     .catch (err => {
       console.log('Error:', err)

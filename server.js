@@ -147,8 +147,8 @@ app.get("/favourite_items", (req, res) => {
 });
 
 app.get("/order_items", (req, res) => {
-  // console.log("%%%%req.sessions", req.session);
-  // oreder id is taken from session cookie. (created at "login")
+  console.log("%%%%...........req.sessions", req.session);
+  // order id is taken from session cookie. (created at "login")
   const id = req.session.id;
   db.query(`
   SELECT * FROM order_items
@@ -167,9 +167,27 @@ app.get("/order_items", (req, res) => {
 
 });
 
-app.get("/order_history", (req, res) => {
-  const templateVars = { type: req.session.type };
-  res.render("order_history",templateVars);
+app.get("/order_history/:id", (req, res) => {
+  console.log(".........................req.params from ortder items;", req.params)
+  console.log("the req.rows: . . .  ",req.rows);
+  db2.getOrderHistory(req.params.id)
+    .then((data) => {
+      /* data Prints id: 2,
+      buyer_id: 2,
+        total_cost: 42,
+          name: 'Gavin Cook',
+            email: 'nolanbriggs@gmail.com',
+              password:
+      */
+      const templateVars = {
+      type: req.session.type,
+      items: data,
+      };
+      console.log("DAAAAATTTTTTAAAAAA: .....  ", data);
+      // res.json({data});
+      // res.redirect(`/order_history`, templateVars);
+      res.render("order_history",templateVars);
+    })
 });
 
 app.get("/seller_login", (req, res) => {
@@ -219,14 +237,22 @@ app.post("/order_items/:id",(req,res) =>{
 })
 //below is from the add to favourite btn
 app.post("/product/:id", (req, res) => {
-  console.log("............>>>>>>>>>>>>>>.................. req.body", req.body);//empty
-  console.log("######req.params from the product page;", req.params);
   db2.addToFavouriteItems(req.params, {id:1})
   .then(() => {
     res.redirect(`/favourite_items`);
   })
 })
-//
+// recent changes ###############################
+// Below is the path for one click purchase button to add to order history
+app.post("/order_history/:id", (req,res) => {
+  console.log("............>>>>>>>>>>>>>>.................. req.body", req.body);
+  console.log("######req.params from the product page;", req.params);
+  db2.getOrderHistory()
+  .then((data) => {
+    console.log("DAAAAATTTTTTAAAAAA: .....  ", data);
+    res.redirect(`/order_history`, data);
+  })
+});
 // below takes the POST form from create_product.js, converts it into an object here and uses an imported addproduct function to update the db
 app.post("/my_products", (req, res) => {
   // const productRows = [products.seller_id, products.price, products.availability, products.title, products.description, products.thumbnail_image_url, products.product_image_url, products.category, products.type, products.material, products.size]
