@@ -1,7 +1,7 @@
 Swap it! - The Plant Swap App
 =========
 
-![swap it main photo](https://github.com/JCON3DEV/plantapp/blob/master/public/planning/mockups/mockup-1.png)
+![swap it main photo](https://github.com/JCON3DEV/plantapp/blob/master/public/slides/slide%201.png)
 
 # What is Swap It?
 Swap It! is your friendly, neighbourhood plant swapping app. Bring a plant or two, or twenty! We leave it up to you, as long as you're prepared to part with them. Trade what you've got, and come home with lots! Welcome to the plant swap.
@@ -54,3 +54,12 @@ The following steps are only for _one_ of the group members to perform.
 - Node 10.x or above
 - NPM 5.x or above
 - PG 6.x
+
+# Additional Project Photos
+![swap it home mockup](https://github.com/JCON3DEV/plantapp/blob/master/public/planning/mockups/mockup-3.png)
+![swap it phonte mockup](https://github.com/JCON3DEV/plantapp/blob/master/public/planning/mockups/mockup-2.png)
+![swap it wireframes](https://github.com/JCON3DEV/plantapp/blob/master/public/slides/slide%203.png)
+![branding elements](https://github.com/JCON3DEV/plantapp/blob/master/public/slides/slide%206.png)
+![references](https://github.com/JCON3DEV/plantapp/blob/master/public/slides/slide%207.png)
+
+
