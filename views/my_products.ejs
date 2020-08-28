@@ -38,59 +38,8 @@
       </div>
 
       <h1>Seller's Items</h1>
+
       <div class="featured-products">
-        <!--list of seller's items-->
-        <% for (const item of items) {%>
-          <div>
-            <div class="product-listing">
-              <img src="<%= item.thumbnail_image_url%>" alt="product image" style="height:4em; width:4em">
-              <h4><%=item.title%> </h4>
-              <button type="submit" class="btn">
-                Remove
-              </button>
-            </div>
-          </div>
-        <% } %>
-
-        <!--product 1-->
-        <div>
-          <a href="/product/1">
-            <div class="product-listing">
-              <img img src="/docs/plants/plant-1.jpg" alt="fasciata" style="width:100%">
-              <h4>fasciata</h4>
-              <button type="submit" class="btn">
-                Favourite
-              </button>
-            </div>
-          </a>
-        </div>
-
-        <!--product 2-->
-        <div>
-          <a href="/product/2">
-            <div class="product-listing">
-              <img img src="/docs/pots/pot-1.jpg" alt="earthpot" style="width:100%">
-              <h4>earth pot</h4>
-              <button type="submit" class="btn">
-                Favourite
-              </button>
-            </div>
-          </a>
-        </div>
-
-        <!--product 3-->
-        <div>
-          <a href="/product/3">
-            <div class="product-listing">
-              <img img src="/docs/plants/plant-2.jpg" alt="rubbertree" style="width:100%">
-              <h4>rubber tree</h4>
-              <button type="submit" class="btn">
-                Favourite
-              </button>
-            </div>
-          </a>
-        </div>
-
         <!--product 4-->
         <div>
           <a href="/product/4">
@@ -98,7 +47,7 @@
               <img img src="/docs/plants/plant-3.jpg" alt="pinkroses" style="width:100%">
               <h4>pink roses</h4>
               <button type="submit" class="btn">
-                Favourite
+                Remove
               </button>
             </div>
           </a>
@@ -111,11 +60,71 @@
               <img img src="/docs/plants/plant-4.jpg" alt="snakeplant" style="width:100%">
               <h4>snake plant</h4>
               <button type="submit" class="btn">
+                Remove
+              </button>
+            </div>
+          </a>
+        </div>
+
+        <!--list of seller's items-->
+        <% for (const item of items) {%>
+          <div>
+            <a href="">
+            <div class="product-listing">
+              <img src="<%= item.thumbnail_image_url%>" alt="product image" style="width:100%">
+              <h4><%=item.title%> </h4>
+              <button type="submit" class="btn">
+                Remove
+              </button>
+            </div>
+            </a>
+          </div>
+        <% } %>
+
+        <!--product 1-->
+        <!--
+        <div>
+          <a href="/product/1">
+            <div class="product-listing">
+              <img img src="/docs/plants/plant-1.jpg" alt="fasciata" style="width:100%">
+              <h4>fasciata</h4>
+              <button type="submit" class="btn">
                 Favourite
               </button>
             </div>
           </a>
         </div>
+        -->
+        <!--product 2-->
+        <!--
+        <div>
+          <a href="/product/2">
+            <div class="product-listing">
+              <img img src="/docs/pots/pot-1.jpg" alt="earthpot" style="width:100%">
+              <h4>earth pot</h4>
+              <button type="submit" class="btn">
+                Favourite
+              </button>
+            </div>
+          </a>
+        </div>
+        -->
+
+        <!--product 3-->
+        <!--
+        <div>
+          <a href="/product/3">
+            <div class="product-listing">
+              <img img src="/docs/plants/plant-2.jpg" alt="rubbertree" style="width:100%">
+              <h4>rubber tree</h4>
+              <button type="submit" class="btn">
+                Favourite
+              </button>
+            </div>
+          </a>
+        </div>
+        -->
+
       </div>
     </main>
 
