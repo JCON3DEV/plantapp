@@ -2,17 +2,26 @@
 <html lang="en">
   <head>
     <title>Product</title>
-
+    <!-- STYESHEETS-->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/products.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/profile.css" type="text/css" />
 
+    <!--FONTS-->
+    <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet">
+
+    <!--SCRIPTS-->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
   <body>
-    <h1>Product Page!</h1>
     <nav>
       <%- include("./partials/_nav") %>
     </nav>
@@ -23,73 +32,76 @@
         <h1>hello IM WORKING</h1>
         <% if (product) { %>
         <h2><%= product.title %></h2>
-        <h2><%= product.seller_id %></h2>
-        <h2><%= product.description %></h2>
-        <h2><%= product.price %></h2>
-        <h2><%= product.availability %></h2>
-        <h2><%= product.thumbnail_image_url %></h2>
-        <h2><%= product.product_image_url %></h2>
-        <h2><%= product.category %></h2>
-        <h2><%= product.type %></h2>
-        <h2><%= product.material %></h2>
-        <h2><%= product.size %></h2>
+        <h2>Description: <%= product.description %></h2>
+        <h2>Price: <%= product.price %></h2>
+        <h2>Seller id; <%= product.seller_id %></h2>
+        <h2>In stock: <%= product.availability %></h2>
+        <img src="<%= product.thumbnail_image_url%>" alt="" style="height:200px; width:200px">
+        <h2>Category: <%= product.category %></h2>
         <% } %>
 
       <div>
         <form method="POST" action="/product/<%=product.id%>">
-          <div class="create-product-button">
-            <button type="submit" class="btn btn-primary">
-              Add to Favourite (not working)
+          <div>
+            <button type="submit" class="btn product-listing">
+              Add to Favourite
             </button>
           </div>
         </form>
       </div>
       <% } %>
-      <!-- button to add to basket (order_items) -->
-      <div>
-        <form method="POST" action="/order_items/<%=product.id%>">
-          <div class="create-product-button">
-            <button type="submit" class="btn btn-primary">
-              Add to basket
-            </button>
-          </div>
-        </form>
-      </div>
 
-      <!-- button to buy now -->
-      <div>
-        <form method="GET" action="/order_history">
-          <div class="create-product-button">
-            <button type="submit" class="btn btn-primary">
-              Buy now
-            </button>
-          </div>
-        </form>
-      </div>
+      <div class="product-listing">
 
-      <% if (type === "seller") { %>
-      <!-- button to mark product as sold out -->
-      <div>
-        <form method="POST" action="/my_products/<%= product.id %>/soldout">
-          <div class="create-product-button">
-            <button type="submit" class="btn btn-primary">
-              Sold out
-            </button>
-          </div>
-        </form>
-      </div>
+        <!-- button to add to basket (order_items) -->
+        <div>
+          <form method="POST" action="/order_items/<%=product.id%>">
+            <div>
+              <button type="submit" class="btn">
+                Add to basket
+              </button>
+            </div>
+          </form>
+        </div>
 
-      <!-- button to remove product -->
-      <div>
-        <form method="POST" action="/my_products/<%= product.id %>/remove">
-          <div class="create-product-button">
-            <button type="submit" class="btn btn-primary">
-             Remove
-            </button>
-          </div>
-        </form>
+        <!-- button to buy now -->
+        <div>
+          <form method="GET" action="/order_history">
+            <div>
+              <button type="submit" class="btn">
+                Buy now
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <% if (type === "seller") { %>
+        <!-- button to mark product as sold out -->
+        <div>
+          <form method="POST" action="/my_products/<%= product.id %>/soldout">
+            <div >
+              <button type="submit" class="btn">
+                Sold out
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- button to remove product -->
+        <div>
+          <form method="POST" action="/my_products/<%= product.id %>/remove">
+            <div >
+              <button type="submit" class="btn">
+               Remove
+              </button>
+            </div>
+          </form>
+        </div>
+        <% } %>
       </div>
-      <% } %>
     </main>
+    <footer>
+      <%- include("./partials/_footer") %>
+    </footer>
   </body>
 </html>

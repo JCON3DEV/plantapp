@@ -1,10 +1,11 @@
-<nav>
-  <div>
+<div>
+  <div class="row-one">
+
     <div>
       <!-- below is the logo that links to home-->
         <div class="logo">
           <a href="/">
-            <img src="/docs/logo/logo.png" alt="HTML tutorial" style="width:200px;height:61px;">
+            <img src="/docs/logo/logo.png" alt="logo" style="width:200px;height:61px;">
           </a>
         </div>
 
@@ -19,26 +20,37 @@
     <div>
       <!-- below is the favourite button-->
         <% if (type === "buyer") { %>
-        <button type="submit" class="btn btn-primary">
-          <a href="/favourite_items">favourite</a>
-        </button>
+          <a href="/favourite_items">
+            <img src="/docs/icons/buyer-icon.png" alt="buyer icon" style="width:20px;height:20px;">
+          </a>
         <% } %>
         <% if (type === "seller") { %>
-        <button type="submit" class="btn btn-primary">
-          <a href="/my_products">My Products</a>
-        </button>
+        <a href="/my_products">
+          <img src="/docs/icons/seller-icon.png" alt="seller icon" style="width:20px;height:20px;">
+        </a>
         <% } else { %>
       <!-- below is the Cart (order_items) button-->
-        <button type="submit" class="btn btn-primary">
-          <a href="/order_items">Cart (order_items)</a>
-        </button>
+          <a href="/favourite_items">
+            <img src="/docs/icons/fav-icon.png" alt="favourite icon" style="width:20px;height:20px;">
+          </a>
+          <!-- below would need fixing from index.ejs -->
+          <a href="/order_items">
+            <img src="/docs/icons/cart-icon.png" alt="cart icon" style="width:20px;height:20px;">
+          </a>
         <% } %>
     </div>
-
-    <div>
+  </div>
+  <div class="row-two">
+    <div class="categories">
       <!-- categories button is available to all-->
       <button class="btn btn-primary">
-        <a href="/category">Category Page</a>
+        <a href="/category">Plants</a>
+      </button>
+      <button class="btn btn-primary">
+        <a href="/category">Seeds</a>
+      </button>
+      <button class="btn btn-primary">
+        <a href="/category">Pots</a>
       </button>
     </div>
 
@@ -63,7 +75,6 @@
       </form>
       <% } %>
     </div>
-
   </div>
+</div>
 
-</nav>

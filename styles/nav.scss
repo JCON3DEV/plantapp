@@ -1,5 +1,19 @@
 nav {
   background-color: #173E3D;
+
+  display:flex;
+
+
+  .row-one{
+    flex-direction:row;
+    justify-content:space-between;
+    width:100%;
+  }
+  .row-two{
+
+  }
 }
+
+
 
 
