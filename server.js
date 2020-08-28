@@ -186,7 +186,7 @@ app.get("/my_products", (req, res) => {
     console.log("getProductsBySellerId data %%%^^&&&%%%...", data);
     const templateVars = {
       type: req.session.type,
-      item: data,
+      items: data,
 
     };
     res.render("my_products", templateVars);

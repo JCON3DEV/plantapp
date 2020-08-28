@@ -572,7 +572,7 @@ const getProductsBySellerId = function(id) {
   `)
   return pool.query(querryString, [id])
     .then(res => {
-      return res.rows[0];
+      return res.rows;
     })
     .catch (err => {
       console.log('Error:', err)
