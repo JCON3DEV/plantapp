@@ -20,33 +20,6 @@
     <main class = "container">
       <div><h2>Plants</h2></div>
       <div>
-        <div><h4>price</h4></div>
-        <form action="/category" method="GET">
-          <% for(let product of products) { %>
-            <div> <%= product.title %> </div>
-            <div> <%= product.description %> </div>
-            <img img src="<%= product.thumbnail_image_url %>" alt="picture of plant products" style="width:20%">
-            <% } %>
-        </form>
-
-        <form action="/categorybyprice" method="POST">
-          <input type="hidden" id="0" name="min" value="0">
-          <input type="hidden" id="20" name="max" value="20">
-          <button type="submit" class="btn btn-primary">0-20</button>
-          <!-- <% for(let product of products) { %>
-            <div> <%= product.title %> </div>
-            <% } %> -->
-        </form>
-        <form action="/categorybyprice" method="POST">
-          <input type="hidden" id="20" name="min" value="20">
-          <input type="hidden" id="40" name="max" value="40">
-          <button type="submit" class="btn btn-primary">20-40</button>
-          <!-- <% for(let product of products) { %>
-            <div> <%= product.title %> </div>
-            <% } %> -->
-        </form>
-      </div>
-      <div>
 
 
         <form method="GET" action="/product/1">
@@ -64,7 +37,6 @@
             </button>
           </div>
         </form>
-
         <form method="GET" action="/product/3">
           <div class="product-listing">
             <button type="submit" class="btn btn-primary">
@@ -72,6 +44,35 @@
             </button>
           </div>
         </form>
+      </div>
+
+        <form action="/categorybyprice" method="POST">
+          <input type="hidden" id="0" name="min" value="0">
+          <input type="hidden" id="20" name="max" value="20">
+          <button type="submit" class="btn btn-primary">0-20</button>
+          <!-- <% for(let product of products) { %>
+            <div> <%= product.title %> </div>
+            <% } %> -->
+          </form>
+          <form action="/categorybyprice" method="POST">
+            <input type="hidden" id="20" name="min" value="20">
+        <input type="hidden" id="40" name="max" value="40">
+        <button type="submit" class="btn btn-primary">20-40</button>
+        <!-- <% for(let product of products) { %>
+          <div> <%= product.title %> </div>
+          <% } %> -->
+      </form>
+
+      <div>
+        <div><h4>price</h4></div>
+        <form action="/category" method="GET">
+          <% for(let product of products) { %>
+            <div> <%= product.title %> </div>
+            <div> <%= product.description %> </div>
+            <img img src="<%= product.thumbnail_image_url %>" alt="picture of plant products" style="width:20%">
+            <% } %>
+          </form>
+
       </div>
     </main>
   </body>
