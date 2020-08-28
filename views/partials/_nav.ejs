@@ -1,22 +1,17 @@
 <nav>
   <div>
-    <!-- below is the search bar form -->
-    <div class="search-bar">
-      <form method="POST" action="/category">
-        <label for="">Enter your search:</label>
-        <input type="text" name="" value="">
-        <button type="submit" class="btn btn-danger">
-          search doesn't work
-        </button>
-      </form>
-    </div>
-
     <div>
-      <!-- below is the home button-->
-        <div class="form-example">
-          <button type="submit" class="btn btn-primary">
-            <a href="/">home</a>
-          </button>
+      <!-- below is the logo that links to home-->
+        <div class="logo">
+          <a href="/">
+            <img src="/docs/logo/logo.png" alt="HTML tutorial" style="width:200px;height:61px;">
+          </a>
+        </div>
+
+        <div class="search-bar">
+          <form method="POST" action="/category">
+            <input type="text" name="" placeholder="What are you looking for?" value="">
+          </form>
         </div>
     </div>
 
