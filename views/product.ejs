@@ -42,59 +42,63 @@
 
       <div>
         <form method="POST" action="/product/<%=product.id%>">
-          <div class="create-product-button">
-            <button type="submit" class="btn btn-primary">
-              Add to Favourite (not working)
+          <div>
+            <button type="submit" class="btn product-listing">
+              Add to Favourite
             </button>
           </div>
         </form>
       </div>
       <% } %>
-      <!-- button to add to basket (order_items) -->
-      <div>
-        <form method="POST" action="/order_items/<%=product.id%>">
-          <div class="create-product-button">
-            <button type="submit" class="btn btn-primary">
-              Add to basket
-            </button>
-          </div>
-        </form>
-      </div>
 
-      <!-- button to buy now -->
-      <div>
-        <form method="GET" action="/order_history">
-          <div class="create-product-button">
-            <button type="submit" class="btn btn-primary">
-              Buy now
-            </button>
-          </div>
-        </form>
-      </div>
+      <div class="product-listing">
 
-      <% if (type === "seller") { %>
-      <!-- button to mark product as sold out -->
-      <div>
-        <form method="POST" action="/my_products/<%= product.id %>/soldout">
-          <div class="create-product-button">
-            <button type="submit" class="btn btn-primary">
-              Sold out
-            </button>
-          </div>
-        </form>
-      </div>
+        <!-- button to add to basket (order_items) -->
+        <div>
+          <form method="POST" action="/order_items/<%=product.id%>">
+            <div>
+              <button type="submit" class="btn">
+                Add to basket
+              </button>
+            </div>
+          </form>
+        </div>
 
-      <!-- button to remove product -->
-      <div>
-        <form method="POST" action="/my_products/<%= product.id %>/remove">
-          <div class="create-product-button">
-            <button type="submit" class="btn btn-primary">
-             Remove
-            </button>
-          </div>
-        </form>
+        <!-- button to buy now -->
+        <div>
+          <form method="GET" action="/order_history">
+            <div>
+              <button type="submit" class="btn">
+                Buy now
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <% if (type === "seller") { %>
+        <!-- button to mark product as sold out -->
+        <div>
+          <form method="POST" action="/my_products/<%= product.id %>/soldout">
+            <div >
+              <button type="submit" class="btn">
+                Sold out
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- button to remove product -->
+        <div>
+          <form method="POST" action="/my_products/<%= product.id %>/remove">
+            <div >
+              <button type="submit" class="btn">
+               Remove
+              </button>
+            </div>
+          </form>
+        </div>
+        <% } %>
       </div>
-      <% } %>
     </main>
     <footer>
       <%- include("./partials/_footer") %>
