@@ -64,6 +64,17 @@ body {
       top: -10px;
     }
   }
+  .inner-container{
+    display: flex;
+    .product-container{
+      justify-content: center;
+      padding-left:50px;
+    }
+  }
+  // THis was added to troubleshoot
+  .product-info{
+    padding-left:500px;
+  }
 
   .about-us {
     background-color: #DDD9D2;

@@ -29,8 +29,6 @@
     <main class = "container">
       <div><h2>Plants</h2></div>
       <div>
-
-
         <form method="GET" action="/product/1">
           <div class="product-listing">
             <button type="submit" class="btn btn-primary">
@@ -71,17 +69,17 @@
           <div> <%= product.title %> </div>
           <% } %> -->
       </form>
-
-      <div>
-        <div><h4>price</h4></div>
-        <form action="/category" method="GET">
-          <% for(let product of products) { %>
-            <div> <%= product.title %> </div>
-            <div> <%= product.description %> </div>
-            <img img src="<%= product.thumbnail_image_url %>" alt="picture of plant products" style="width:20%">
-            <% } %>
-          </form>
-
+      <div class="inner-container">
+        <div class="product-container">
+          <div><h4>price</h4></div>
+          <form action="/category" method="GET">
+            <% for(let product of products) { %>
+              <div> <%= product.title %> </div>
+              <div> <%= product.description %> </div>
+              <img img src="<%= product.thumbnail_image_url %>" alt="picture of plant products" style="width:20%">
+              <% } %>
+            </form>
+          </div>
       </div>
     </main>
     <footer>
