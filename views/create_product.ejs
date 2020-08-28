@@ -27,146 +27,147 @@
 
     <main class="container">
       <h1>Create New Product</h1>
-
+      <div class="create-product-form">
       <!-- add product to database and redirect to my products -->
-      <form method="POST" action="/my_products">
+        <form method="POST" action="/my_products">
 
-      <!-- enter product name ('title') -->
+        <!-- enter product name ('title') -->
+          <div class="row">
+            <div class="col-25">
+              <label for="pname">Product Name</label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="title" name="product_name" placeholder="What is the name of your product?">
+            </div>
+          </div>
+
+        <!-- enter thumbnail image url ('thumbnail_image_url') -->
+          <div class="row">
+            <div class="col-25">
+              <label for="thumbnail">Thumbnail Image URL</label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="thumbnail_image_url" name="thumbnail_image_url" placeholder="Enter the link for your thumbnail image">
+            </div>
+          </div>
+
+        <!-- enter cover image url ('cover_image_url') -->
+          <div class="row">
+            <div class="col-25">
+              <label for="cover">Cover Image URL</label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="product_image_url" name="product_image_url" placeholder="Enter the link for your cover image">
+            </div>
+          </div>
+
+        <!-- enter price ('price') -->
         <div class="row">
           <div class="col-25">
-            <label for="pname">Product Name</label>
+            <label for="price">Price</label>
           </div>
           <div class="col-75">
-            <input type="text" id="title" name="product_name" placeholder="What is the name of your product?">
+            <input type="text" id="price" name="price" placeholder="How much is your product?">
           </div>
         </div>
 
-      <!-- enter thumbnail image url ('thumbnail_image_url') -->
+        <!-- drop down to enter the category -->
+          <div class="row">
+            <div class="col-25">
+              <label for="category">Category</label>
+            </div>
+            <div class="col-75">
+              <select id="category" name="category">
+                <option value="plants">Plants</option>
+                <option value="seeds">Seeds</option>
+                <option value="pots">Pots</option>
+              </select>
+            </div>
+          </div>
+
+        <!-- drop down to enter the seed type -->
         <div class="row">
           <div class="col-25">
-            <label for="thumbnail">Thumbnail Image URL</label>
+            <label for="seed-type">Seed Type</label>
           </div>
           <div class="col-75">
-            <input type="text" id="thumbnail_image_url" name="thumbnail_image_url" placeholder="Enter the link for your thumbnail image">
-          </div>
-        </div>
-
-      <!-- enter cover image url ('cover_image_url') -->
-        <div class="row">
-          <div class="col-25">
-            <label for="cover">Cover Image URL</label>
-          </div>
-          <div class="col-75">
-            <input type="text" id="product_image_url" name="product_image_url" placeholder="Enter the link for your cover image">
-          </div>
-        </div>
-
-      <!-- enter price ('price') -->
-      <div class="row">
-        <div class="col-25">
-          <label for="price">Price</label>
-        </div>
-        <div class="col-75">
-          <input type="text" id="price" name="price" placeholder="How much is your product?">
-        </div>
-      </div>
-
-      <!-- drop down to enter the category -->
-        <div class="row">
-          <div class="col-25">
-            <label for="category">Category</label>
-          </div>
-          <div class="col-75">
-            <select id="category" name="category">
-              <option value="plants">Plants</option>
-              <option value="seeds">Seeds</option>
-              <option value="pots">Pots</option>
+            <select id="seed-type" name="seed-type">
+              <option value="flowers">N/A</option>
+              <option value="flowers">Flowers</option>
+              <option value="succulents">Succulents</option>
+              <option value="fruits-veggies">Fruits and Veggies</option>
+              <option value="herbs">Herbs</option>
+              <option value="trees">Trees</option>
+              <option value="tropical">Tropical</option>
             </select>
           </div>
         </div>
 
-      <!-- drop down to enter the seed type -->
-      <div class="row">
-        <div class="col-25">
-          <label for="seed-type">Seed Type</label>
-        </div>
-        <div class="col-75">
-          <select id="seed-type" name="seed-type">
-            <option value="flowers">N/A</option>
-            <option value="flowers">Flowers</option>
-            <option value="succulents">Succulents</option>
-            <option value="fruits-veggies">Fruits and Veggies</option>
-            <option value="herbs">Herbs</option>
-            <option value="trees">Trees</option>
-            <option value="tropical">Tropical</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- drop down to enter the plant type -->
-      <div class="row">
-        <div class="col-25">
-          <label for="plant-type">Plant Type</label>
-        </div>
-        <div class="col-75">
-          <select id="plant-type" name="plant-type">
-            <option value="flowers">N/A</option>
-            <option value="flowers">Flowers</option>
-            <option value="succulents">Succulents</option>
-            <option value="fruits-veggies">Fruits and Veggies</option>
-            <option value="herbs">Herbs</option>
-            <option value="trees">Trees</option>
-            <option value="tropical">Tropical</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- drop down to enter the material type -->
-      <div class="row">
-        <div class="col-25">
-          <label for="material-type">Material Type</label>
-        </div>
-        <div class="col-75">
-          <select id="material-type" name="material-type">
-            <option value="flowers">N/A</option>
-            <option value="wood">Wood</option>
-            <option value="ceramic">Ceramic</option>
-            <option value="glass">Glass</option>
-            <option value="macrame">Macrame</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- drop down to enter the size type -->
-      <div class="row">
-        <div class="col-25">
-          <label for="size-type">Size Type</label>
-        </div>
-        <div class="col-75">
-          <select id="size-type" name="size-type">
-            <option value="flowers">N/A</option>
-            <option value="small">Small</option>
-            <option value="medium">Medium</option>
-            <option value="large">Large</option>
-          </select>
-        </div>
-      </div>
-
-        <!-- text area to enter product description -->
+        <!-- drop down to enter the plant type -->
         <div class="row">
           <div class="col-25">
-            <label for="description">Description</label>
+            <label for="plant-type">Plant Type</label>
           </div>
           <div class="col-75">
-            <textarea id="description" name="description" placeholder="Tell us a little bit about your product.." style="height:200px"></textarea>
+            <select id="plant-type" name="plant-type">
+              <option value="flowers">N/A</option>
+              <option value="flowers">Flowers</option>
+              <option value="succulents">Succulents</option>
+              <option value="fruits-veggies">Fruits and Veggies</option>
+              <option value="herbs">Herbs</option>
+              <option value="trees">Trees</option>
+              <option value="tropical">Tropical</option>
+            </select>
           </div>
         </div>
 
-        <!-- button to add product to database and redirect to my products -->
+        <!-- drop down to enter the material type -->
         <div class="row">
-          <input type="submit" value="Submit">
+          <div class="col-25">
+            <label for="material-type">Material Type</label>
+          </div>
+          <div class="col-75">
+            <select id="material-type" name="material-type">
+              <option value="flowers">N/A</option>
+              <option value="wood">Wood</option>
+              <option value="ceramic">Ceramic</option>
+              <option value="glass">Glass</option>
+              <option value="macrame">Macrame</option>
+            </select>
+          </div>
         </div>
-      </form>
+
+        <!-- drop down to enter the size type -->
+        <div class="row">
+          <div class="col-25">
+            <label for="size-type">Size Type</label>
+          </div>
+          <div class="col-75">
+            <select id="size-type" name="size-type">
+              <option value="flowers">N/A</option>
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
+            </select>
+          </div>
+        </div>
+
+          <!-- text area to enter product description -->
+          <div class="row">
+            <div class="col-25">
+              <label for="description">Description</label>
+            </div>
+            <div class="col-75">
+              <textarea id="description" name="description" placeholder="Tell us a little bit about your product.." style="height:200px"></textarea>
+            </div>
+          </div>
+
+          <!-- button to add product to database and redirect to my products -->
+          <div class="row">
+            <input type="submit" value="Submit">
+          </div>
+        </form>
+      </div>
 
       <footer>
         <%- include("./partials/_footer") %>
