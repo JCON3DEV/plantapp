@@ -588,12 +588,12 @@ const getProductsBySellerId = function(id) {
   (`
     SELECT *
     FROM products
-      JOIN sellers on seller_id = sellers(id)
-    WHERE id = $1;
+    JOIN sellers on seller_id = sellers.id
+    WHERE sellers.id = $1;
   `)
   return pool.query(querryString, [id])
     .then(res => {
-      return res.rows[0];
+      return res.rows;
     })
     .catch (err => {
       console.log('Error:', err)

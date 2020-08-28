@@ -197,10 +197,20 @@ app.get("/seller_login", (req, res) => {
 
 app.get("/my_products", (req, res) => {
   // ##################################################################################
+
   // MUST add get * prodcuts for user whre id = ...
   // pass the resutls to ejs as template vars
-  const templateVars = { type: req.session.type };
-  res.render("my_products", templateVars);
+  db2.getProductsBySellerId(1)
+  .then((data) => {
+    console.log("getProductsBySellerId data %%%^^&&&%%%...", data);
+    const templateVars = {
+      type: req.session.type,
+      items: data,
+
+    };
+    res.render("my_products", templateVars);
+
+  })
 });
 
 app.get("/create_product", (req, res) => {
