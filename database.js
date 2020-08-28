@@ -562,3 +562,20 @@ const getOrderHistory = function(id) {
 exports.getOrderHistory = getOrderHistory;
 
 
+const getProductsBySellerId = function(id) {
+  const querryString =
+  (`
+    SELECT *
+    FROM products
+    JOIN sellers on seller_id = sellers.id
+    WHERE sellers.id = $1;
+  `)
+  return pool.query(querryString, [id])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch (err => {
+      console.log('Error:', err)
+    });
+};
+exports.getProductsBySellerId = getProductsBySellerId;
