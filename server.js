@@ -54,20 +54,26 @@ const widgetsRoutes = require("./routes/widgets");
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-app.get("/", (req, res) => {
+
+// ##### Categorise what entities realte to each other,eg orders / user; buyer / seller
+// To modularise the code blocks - distinct and recognisable ##
+// perhaps label these functions as controllers and place in a new file.
+// THen import that file into server.js
+const gethome = (req, res) => {
   console.log("req.session", req.session);
   db.query(`SELECT * FROM products LIMIT 5;`)
-  .then((data) => {
-    console.log("$$$$%%%$$", data.rows);
+    .then((data) => {
+      console.log("$$$$%%%$$", data.rows);
 
-    const templateVars = {
-      type :req.session.type,
-      products: data.rows,
-    };
-    console.log("#### req.params", req.params);
-    res.render("index", templateVars);
-  });
-});
+      const templateVars = {
+        type: req.session.type,
+        products: data.rows,
+      };
+      console.log("#### req.params", req.params);
+      res.render("index", templateVars);
+    });
+}
+app.get("/", gethome);
 
 app.get("/category", (req, res) => {
   db2.getProducts()
@@ -80,6 +86,8 @@ app.get("/category", (req, res) => {
   })
 
 });
+// should have been a GET request to category above. (With queries) eg;
+//  /catergory?filter={ price: { min: 45, max: 455}}
 app.post("/categorybyprice", (req, res) => {
   console.log("...............................................................................", req.body)
   let minimum = req.body.min
@@ -105,6 +113,7 @@ app.post("/categorybyprice", (req, res) => {
 //   res.render("product",templateVars);
 // });
 
+// Restful Routes would have plurals for products
 app.get("/product/:product_id", (req, res) => {
   const product_id = req.params.product_id;
   db.query(`SELECT * FROM products WHERE id = ${product_id}`)
@@ -127,17 +136,20 @@ app.get("/buyer_login", (req, res) => {
   `)
   .then((data) => {
     const order_id = data.rows[0].id;
+    // ## below should replace bottom two session variables ###
+    // req.session.user = {type: "buyer", id: order_id};
+    // This is so that the session is not forgotten / overlooked when logging out
     req.session.type = "buyer";
     req.session.id = order_id;
     res.redirect("/");
   });
+  // one session should be used instead of two.
 });
 
 // does this need to be hard coded can we make this dyncic below
 app.get("/favourite_items", (req, res) => {
   db2.getFavouriteItems(1)
   .then((favourites) => {
-    console.log("$$$%$%$%$%.........", favourites);
     const templateVars = {
       type: req.session.type,
       favourites,
@@ -147,7 +159,6 @@ app.get("/favourite_items", (req, res) => {
 });
 
 app.get("/order_items", (req, res) => {
-  console.log("%%%%...........req.sessions", req.session);
   // order id is taken from session cookie. (created at "login")
   const id = req.session.id;
   db.query(`
@@ -157,7 +168,6 @@ app.get("/order_items", (req, res) => {
   `)
   .then((data) =>{
     // data is the response form the db query - convention to call it data
-    // console.log("*******data.rows", data.rows);
     const templateVars = {
       type: req.session.type,
       items: data.rows,
@@ -168,8 +178,6 @@ app.get("/order_items", (req, res) => {
 });
 
 app.get("/order_history/:id", (req, res) => {
-  console.log(".........................req.params from ortder items;", req.params)
-  console.log("the req.rows: . . .  ",req.rows);
   db2.getOrderHistory(req.params.id)
     .then((data) => {
       /* data Prints id: 2,
@@ -183,7 +191,6 @@ app.get("/order_history/:id", (req, res) => {
       type: req.session.type,
       items: data,
       };
-      console.log("DAAAAATTTTTTAAAAAA: .....  ", data);
       // res.json({data});
       // res.redirect(`/order_history`, templateVars);
       res.render("order_history",templateVars);
@@ -222,15 +229,12 @@ app.get("/create_product", (req, res) => {
 // below is the post from add to basket btn
 app.post("/order_items/:id",(req,res) =>{
   // req.params got passed along by loggin in
-  console.log("*&*&*& req session info; ", req.session);
-  console.log("%%%%%%** req.params data; ", req.params);
   const productId = req.params.id;
   const orderId = req.session.id;
   // console.log("req.params from the product page;",req.params);
   // query to find the price based on info already aquired
   db.query(`SELECT price, description, thumbnail_image_url FROM products WHERE id = ${productId};`)
   .then((data) =>{
-    console.log("***__***data .rows added to cart item;***^^**", data.rows[0]);
     const price = data.rows[0].price;
     const img = data.rows[0].thumbnail_image_url;
     const description = data.rows[0].description;
@@ -258,11 +262,8 @@ app.post("/product/:id", (req, res) => {
 // recent changes ###############################
 // Below is the path for one click purchase button to add to order history
 app.post("/order_history/:id", (req,res) => {
-  console.log("............>>>>>>>>>>>>>>.................. req.body", req.body);
-  console.log("######req.params from the product page;", req.params);
   db2.getOrderHistory()
   .then((data) => {
-    console.log("DAAAAATTTTTTAAAAAA: .....  ", data);
     res.redirect(`/order_history`, data);
   })
 });
@@ -287,8 +288,6 @@ app.post("/my_products", (req, res) => {
   // const templateVars = { productItem: req.session.type };
   db2.addProduct(productItem)
   .then((data) => {
-    console.log("product item ........###.......", productItem)
-    console.log("data", data);
     res.redirect(`/product/${data.id}`);
   });
 });
